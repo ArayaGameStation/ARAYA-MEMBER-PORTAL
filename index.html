@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LEADERBOARD MEMBER ARAYA</title>
+
+  <!-- Font Orbitron -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+
+  <style>
+    /* ===== Base ===== */
+    body {
+      margin: 0;
+      padding: 20px;
+      font-family: 'Orbitron', sans-serif;
+      color: #ffffff;
+      text-align: center;
+      overflow-x: hidden;
+      background: #000;
+    }
+
+    /* ===== Title ===== */
+    h1 {
+      background: linear-gradient(90deg, #0080ff, #00e5ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 10px #00c8ff, 0 0 20px #0070ff;
+      margin-top: 50px;
+      margin-bottom: 25px;
+      font-size: clamp(1.8em, 3vw, 2.2em);
+      font-weight: bold;
+    }
+
+    /* ===== Container ===== */
+    .leaderboard-container {
+      width: 100%;
+      max-width: 1000px;
+      margin: 0 auto;
+      background: rgba(0,0,0,0.7);
+      box-shadow: 0 0 12px rgba(0, 120, 255, 0.6), 0 0 25px rgba(0, 200, 255, 0.3);
+      border-radius: 10px;
+      overflow-y: auto;
+      max-height: 750px;
+    }
+
+    /* ===== Table ===== */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      table-layout: auto;
+    }
+
+    th, td {
+      padding: 12px 15px;
+      border-bottom: 1px solid rgba(0, 200, 255, 0.15);
+      transition: 0.3s;
+      word-wrap: break-word;
+      font-size: clamp(1em, 2.5vw, 1.1em);
+    }
+
+    th {
+      background: linear-gradient(90deg, #0a0a0a, #002040);
+      color: #e0f8ff;
+      text-transform: uppercase;
+      font-weight: bold;
+      letter-spacing: 1px;
+      text-shadow: 0 0 6px #00c8ff;
+      position: sticky;
+      top: 0;
+      z-index: 2;
+    }
+
+    tr:nth-child(even) { background-color: #111; }
+
+    tr:hover {
+      background: linear-gradient(90deg, rgba(0,150,255,0.2), rgba(0,220,255,0.25));
+      box-shadow: 0 0 8px rgba(0,200,255,0.3);
+      cursor: pointer;
+      transition: 0.4s;
+    }
+
+    /* ===== Top Rank ===== */
+    .top1 {
+      background: linear-gradient(90deg, #0040ff, #00ccff);
+      color: #fff;
+      font-weight: bold;
+      box-shadow: 0 0 10px #00e5ff, 0 0 20px #0070ff;
+    }
+    .top2 {
+      background: linear-gradient(90deg, #001a66, #0040aa);
+      color: #fff;
+      font-weight: bold;
+      box-shadow: 0 0 6px #0066ff, 0 0 12px #0033aa;
+    }
+    .top3 {
+      background: linear-gradient(90deg, #001020, #002060);
+      color: #fff;
+      font-weight: bold;
+      box-shadow: 0 0 4px #004080, 0 0 8px #001a33;
+    }
+
+    /* ===== Video Background ===== */
+    #bgVideo {
+      position: fixed;
+      top: 0;
+      left: 0;
+      min-width: 100%;
+      min-height: 100%;
+      width: auto;
+      height: auto;
+      z-index: -1;
+      object-fit: cover;
+    }
+
+    /* ===== Responsive ===== */
+    @media (max-width: 768px) {
+      h1 { margin-top: 30px; }
+      th, td { padding: 10px 8px; }
+      th:nth-child(1), td:nth-child(1) { text-align: center; }
+      th:nth-child(2), td:nth-child(2) { text-align: left; }
+      th:nth-child(3), td:nth-child(3) { text-align: center; }
+    }
+
+    @media (max-width: 480px) {
+      h1 { margin-top: 20px; font-size: clamp(1.2em, 5vw, 1.5em); }
+      th, td { padding: 8px 5px; font-size: clamp(0.8em, 3.5vw, 0.9em); }
+      td:nth-child(2) {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+
+    /* ===== Footer ===== */
+    footer {
+      margin-top: 15px;
+      font-size: 0.8em;
+      color: #ccc;
+      text-shadow: 0 0 3px #00c8ff;
+    }
+
+    /* ===== Scrollbar (Desktop) ===== */
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #111;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #00c8ff;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Video Background -->
+  <video autoplay muted loop playsinline id="bgVideo">
+    <source src="https://cdn.pixabay.com/video/2021/03/06/67116-521253275_large.mp4" type="video/mp4">
+  </video>
+
+  <!-- Title -->
+  <h1>LEADERBOARD MEMBER ARAYA GAMESTATION</h1>
+
+  <!-- Leaderboard -->
+  <div class="leaderboard-container">
+    <table id="leaderboard">
+      <thead>
+        <tr>
+          <th>Rank</th>
+          <th>Nama</th>
+          <th>Point</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+
+  <!-- Footer -->
+  <footer>Powered by ARAYA Gamestation</footer>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+  <script>
+    const sheetCsvUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTsla4DIK8GQSXOAj5eMWVCMhThbuEMpcOMZBcYt9mPzKq_OGOS5MiZmlB-y8I9D_OOc9oIbxFaPoE7/pub?gid=1706144092&single=true&output=csv';
+
+    Papa.parse(sheetCsvUrl, {
+      download: true,
+      header: true,
+      complete: function(results) {
+        const data = results.data.filter(row => row.NAMA && row.POIN);
+        const tbody = document.querySelector("#leaderboard tbody");
+
+        data.forEach((row, i) => {
+          const tr = document.createElement("tr");
+
+          // Tambahkan class rank
+          if (i === 0) tr.className = "top1";
+          else if (i === 1) tr.className = "top2";
+          else if (i === 2) tr.className = "top3";
+
+          // Emoji rank
+          let medal = "";
+          if (i === 0) medal = "🥇";
+          else if (i === 1) medal = "🥈";
+          else if (i === 2) medal = "🥉";
+
+          // Buat sel tabel
+          const tdRank = document.createElement("td");
+          tdRank.textContent = medal || (i + 1);
+
+          const tdName = document.createElement("td");
+          tdName.textContent = row.NAMA;
+
+          const tdPoint = document.createElement("td");
+          tdPoint.textContent = row.POIN;
+
+          // Tambah ke row
+          tr.appendChild(tdRank);
+          tr.appendChild(tdName);
+          tr.appendChild(tdPoint);
+
+          // Tambah ke tbody
+          tbody.appendChild(tr);
+        });
+      },
+      error: function(err) {
+        console.error("Database gagal dimuat:", err);
+      }
+    });
+  </script>
+</body>
+</html>
