@@ -1,235 +1,882 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LEADERBOARD MEMBER ARAYA</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ARAYA MEMBER PORTAL</title>
 
-  <!-- Font Orbitron -->
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
 
   <style>
-    /* ===== Base ===== */
-    body {
-      margin: 0;
-      padding: 20px;
-      font-family: 'Orbitron', sans-serif;
-      color: #ffffff;
-      text-align: center;
-      overflow-x: hidden;
-      background: #000;
+  
+    :root{
+      --bg:#080A1A;
+      --card-bg-image:url('https://i.imgur.com/nwbUELc.jpeg');
+      --line:rgba(0,191,255,0.2);
+      --text:#E0FFFF;
+      --muted:#9BBCEF;
+      --primary:#00BFFF;
+      --secondary:#00FFFF;
+      --accent:#ADD8E6;
+      
+   /* Tier Colors */
+     --bronze: linear-gradient(135deg, #8c4a2f 0%, #b87333 50%, #ff9f50 100%);
+     --silver: linear-gradient(135deg, #cbd8e6 0%, #a4c9f0 50%, #7abfff 100%);
+     --gold: linear-gradient(135deg, #ffce00 0%, #ffb800 50%, #ff9e00 100%);
     }
-
-    /* ===== Title ===== */
-    h1 {
-      background: linear-gradient(90deg, #0080ff, #00e5ff);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      text-shadow: 0 0 10px #00c8ff, 0 0 20px #0070ff;
-      margin-top: 50px;
-      margin-bottom: 25px;
-      font-size: clamp(1.8em, 3vw, 2.2em);
-      font-weight: bold;
+    
+    /* Global Styles */
+    *, ::before, ::after{box-sizing:border-box;margin:0;padding:0}
+    body{
+      font-family:'Poppins',sans-serif;
+      background:rgba(0,0,0,1);
+      color:var(--text);
+      line-height:1.6;
+      overflow-x:hidden;
+      position:relative;
     }
-
-    /* ===== Container ===== */
-    .leaderboard-container {
-      width: 100%;
-      max-width: 1000px;
-      margin: 0 auto;
-      background: rgba(0,0,0,0.7);
-      box-shadow: 0 0 12px rgba(0, 120, 255, 0.6), 0 0 25px rgba(0, 200, 255, 0.3);
-      border-radius: 10px;
-      overflow-y: auto;
-      max-height: 750px;
-    }
-
-    /* ===== Table ===== */
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      table-layout: auto;
-    }
-
-    th, td {
-      padding: 12px 15px;
-      border-bottom: 1px solid rgba(0, 200, 255, 0.15);
-      transition: 0.3s;
-      word-wrap: break-word;
-      font-size: clamp(1em, 2.5vw, 1.1em);
-    }
-
-    th {
-      background: linear-gradient(90deg, #0a0a0a, #002040);
-      color: #e0f8ff;
-      text-transform: uppercase;
-      font-weight: bold;
-      letter-spacing: 1px;
-      text-shadow: 0 0 6px #00c8ff;
-      position: sticky;
-      top: 0;
-      z-index: 2;
-    }
-
-    tr:nth-child(even) { background-color: #111; }
-
-    tr:hover {
-      background: linear-gradient(90deg, rgba(0,150,255,0.2), rgba(0,220,255,0.25));
-      box-shadow: 0 0 8px rgba(0,200,255,0.3);
-      cursor: pointer;
-      transition: 0.4s;
-    }
-
-    /* ===== Top Rank ===== */
-    .top1 {
-      background: linear-gradient(90deg, #0040ff, #00ccff);
-      color: #fff;
-      font-weight: bold;
-      box-shadow: 0 0 10px #00e5ff, 0 0 20px #0070ff;
-    }
-    .top2 {
-      background: linear-gradient(90deg, #001a66, #0040aa);
-      color: #fff;
-      font-weight: bold;
-      box-shadow: 0 0 6px #0066ff, 0 0 12px #0033aa;
-    }
-    .top3 {
-      background: linear-gradient(90deg, #001020, #002060);
-      color: #fff;
-      font-weight: bold;
-      box-shadow: 0 0 4px #004080, 0 0 8px #001a33;
-    }
-
-    /* ===== Video Background ===== */
-    #bgVideo {
+    
+    /* Background Video */
+    #bg-video {
       position: fixed;
       top: 0;
       left: 0;
-      min-width: 100%;
-      min-height: 100%;
-      width: auto;
-      height: auto;
-      z-index: -1;
+      width: 100%;
+      height: 100%;
       object-fit: cover;
+      z-index: -2;
+      filter: brightness(1) contrast(1) grayscale(0);
     }
 
-    /* ===== Responsive ===== */
-    @media (max-width: 768px) {
-      h1 { margin-top: 30px; }
-      th, td { padding: 10px 8px; }
-      th:nth-child(1), td:nth-child(1) { text-align: center; }
-      th:nth-child(2), td:nth-child(2) { text-align: left; }
-      th:nth-child(3), td:nth-child(3) { text-align: center; }
+    a{text-decoration:none}
+    h1,h2,h3{
+      font-family:'Orbitron',sans-serif;
+      color:var(--secondary);
+      margin-bottom:0.8rem;
+      text-shadow:0 0 15px var(--secondary);
+      transition: color 0.3s, text-shadow 0.3s;
+    }
+    h1{font-size:3.8rem;letter-spacing:3px}
+    h2{font-size:3rem;text-shadow:0 0 12px var(--secondary)}
+    h3{font-size:1.8rem;color:var(--primary)}
+    
+    section{padding:5rem 1.25rem;position:relative;z-index:1}
+    .container{max-width:1100px;margin:0 auto}
+    .btn{
+      padding:.8rem 2rem;
+      border:2px solid var(--primary);
+      background:rgba(0,191,255,0.08);
+      border-radius:4px;
+      cursor:pointer;
+      font-weight:600;
+      transition:.3s ease-in-out;
+      display:inline-block;
+      font-family:'Orbitron',sans-serif;
+      text-transform:uppercase;
+      letter-spacing:1px;
+      position:relative;
+      overflow:hidden;
+      color:var(--primary);
+      box-shadow:0 0 10px rgba(0,191,255,0.3);
+    }
+    .btn.primary{
+      background:var(--primary);
+      color:var(--bg);
+      border-color:var(--primary);
+      box-shadow:0 0 20px rgba(0,191,255,0.6);
+    }
+    .btn.accent{
+      background:var(--accent);
+      color:var(--bg);
+      border-color:var(--accent);
+      box-shadow:0 0 20px rgba(173,216,230,0.6);
+    }
+    .btn.ghost{
+      background:transparent;
+      border:2px solid var(--secondary);
+      color:var(--secondary);
+    }
+    .btn:hover:not(:disabled){
+      transform:translateY(-3px);
+      box-shadow:0 0 25px var(--secondary), 0 0 40px var(--primary);
+      border-color:var(--secondary);
+    }
+    .btn:disabled{cursor:not-allowed;opacity:.5}
+
+    .card{
+      position: relative;
+      border:1px solid var(--line);
+      border-radius:6px;
+      padding:2rem;
+      margin-bottom:1.5rem;
+      background:rgba(18,20,35,0.8);
+      box-shadow:0 0 10px rgba(0,191,255,0.2);
+      transition:transform .4s, box-shadow .4s, border-color .4s;
+      overflow: hidden;
+    }
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--card-bg-image) no-repeat center center/cover;
+      opacity: 0.05;
+      z-index: 0;
+      filter: saturate(0.8) contrast(1.1);
+    }
+    .card > *, .card h3 {
+      position: relative;
+      z-index: 1;
+    }
+    .card:hover{
+      transform:translateY(-5px);
+      box-shadow:0 15px 35px rgba(0,255,255,0.3);
+      border-color:var(--secondary);
+    }
+    
+    input{
+      padding:.9rem;
+      border-radius:4px;
+      border:1px solid var(--line);
+      background:rgba(18,20,35,0.9);
+      color:var(--text);
+      width:100%;
+      margin-bottom:1rem;
+      font-family:'Poppins',sans-serif;
+      transition:all .3s ease;
+    }
+    input:focus{
+      outline:none;
+      border-color:var(--secondary);
+      box-shadow:0 0 12px rgba(0,255,255,0.4);
+    }
+    
+    .grid{display:grid;gap:2rem}
+    @media(min-width:768px){.grid-3{grid-template-columns:repeat(3,1fr)}}
+    ul{margin-left:1.5rem;list-style:none}
+    ul li{position:relative;padding-left:1.5rem;margin-bottom:.6rem}
+    ul li::before{
+      content:'';
+      position:absolute;
+      left:0;top:50%;
+      transform:translateY(-50%);
+      width:8px;height:8px;
+      background:var(--secondary);
+      border-radius:50%;
+      box-shadow:0 0 8px var(--secondary);
     }
 
-    @media (max-width: 480px) {
-      h1 { margin-top: 20px; font-size: clamp(1.2em, 5vw, 1.5em); }
-      th, td { padding: 8px 5px; font-size: clamp(0.8em, 3.5vw, 0.9em); }
-      td:nth-child(2) {
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-      }
+    /* Tier Cards */
+    .tier{
+      border-radius:6px;
+      text-align:left;
+      position:relative;
+      overflow:hidden;
+      transition:transform .3s, box-shadow .3s;
+      background:rgba(18,20,35,0.9);
+      border:1px solid;
+    }
+    .tier h3{color:var(--text);text-shadow:none;text-align:center}
+    .tier.bronze{
+      background:var(--bronze);
+      border-color:var(--bronze);
+      box-shadow:0 0 10px rgba(205,127,50,.35)
+    }
+    .tier.silver{
+      background:var(--silver);
+      border-color:var(--silver);
+      box-shadow:0 0 10px rgba(192,192,192,.35)
+    }
+    .tier.gold{
+      background:var(--gold);
+      border-color:var(--gold);
+      box-shadow:0 0 10px rgba(255,215,0,.4)
+    }
+    .tier p strong{color:var(--text)}
+    .tier ul li{
+      font-weight:500;
+      color:var(--text);
+      text-shadow:none;
+      padding-left:1.5rem;
+    }
+    .tier ul li::before{
+      background:var(--secondary);
+      box-shadow:0 0 5px var(--secondary);
+    }
+    .tier:hover {
+      transform: translateY(-8px);
     }
 
-    /* ===== Footer ===== */
-    footer {
-      margin-top: 15px;
-      font-size: 0.8em;
-      color: #ccc;
-      text-shadow: 0 0 3px #00c8ff;
+    /* Tabs Leaderboard */
+    .tabs{display:flex;flex-wrap:wrap;gap:.8rem;justify-content:center;margin:1.5rem 0 1.5rem}
+    .tab-btn{
+      background:rgba(18,20,35,0.8);
+      color:var(--primary);
+      border:1px solid var(--primary);
+      border-radius:4px;
+      padding:.6rem 1.2rem;
+      font-weight:600;
+      cursor:pointer;
+      transition:.2s;
+    }
+    .tab-btn.active{
+      background:var(--primary);
+      color:var(--bg);
+      box-shadow:0 0 10px rgba(0,191,255,0.5);
+      border-color:var(--primary);
     }
 
-    /* ===== Scrollbar (Desktop) ===== */
-    ::-webkit-scrollbar {
-      width: 6px;
+    /* Leaderboard Table */
+    .leaderboard-container{
+      background:rgba(18,20,35,0.8);
+      width:100%;
+      max-height:550px;
+      overflow-y:auto;
+      box-shadow:0 0 10px rgba(0,191,255,0.2);
+      border:1px solid var(--line);
+      border-radius:6px;
+      
+      /* Animasi fade */
+      opacity:1;
+      transition:opacity 0.3s ease-in-out;
     }
-    ::-webkit-scrollbar-track {
-      background: #111;
+    .leaderboard-container.fade-out{
+      opacity:0;
     }
-    ::-webkit-scrollbar-thumb {
-      background: #00c8ff;
-      border-radius: 10px;
+    .leaderboard-container::-webkit-scrollbar{width:8px}
+    .leaderboard-container::-webkit-scrollbar-thumb{background-color:var(--primary);border-radius:4px}
+    .leaderboard-container::-webkit-scrollbar-track{background-color:transparent}
+
+    table{width:100%;border-collapse:collapse;color:#fff}
+    th,td{padding:12px 14px;border-bottom:1px solid rgba(0,191,255,.1);text-align:center}
+    th{
+      background:linear-gradient(90deg, rgba(18,20,35,0.9), rgba(28,30,45,0.9));
+      color:var(--primary);letter-spacing:.5px;position:sticky;top:0;z-index:1;
+      text-transform:uppercase;
+      font-family:'Orbitron',sans-serif;
+      box-shadow:0 2px 8px rgba(0,0,0,0.4);
+    }
+    tr:nth-child(even){background:rgba(0,255,255,0.03)}
+    tr:hover{background:rgba(0,191,255,.1);transition:.25s}
+
+    /* Member ID Card */
+    .member-card {
+      width: 340px;
+      height: 200px;
+      border: 1px solid var(--primary);
+      border-radius: 6px;
+      box-shadow: 0 0 15px rgba(0,191,255,.4);
+      margin: 1.5rem auto;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      text-align: left;
+      position: relative;
+      background: var(--card-bg-image) no-repeat center center/cover;
+      background-position: 50% 50%;
+      background-size: cover;
+      color: var(--text);
+      overflow: hidden;
+      transform: translateZ(0);
+      transition: box-shadow 0.4s ease-in-out, transform 0.3s ease-out;
+    }
+
+    .member-card:hover {
+        box-shadow: 0 0 30px var(--secondary);
+        transform: translateY(-5px);
+    }
+
+    .member-card::before, .member-card::after {
+        content: none;
+    }
+
+    .member-card::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.5);
+        z-index: 1;
+    }
+
+    .member-card h3 {
+      font-size: 1.1rem;
+      color: var(--secondary);
+      text-shadow: none;
+      margin: 0;
+      position: absolute;
+      z-index: 2;
+    }
+    .member-card .id {
+      position: absolute;
+      top: 1.7rem;
+      right: 1.5rem;
+      font-size: 0.9rem;
+      color: var(--muted);
+      text-shadow: none;
+      font-family:'Orbitron',sans-serif;
+      z-index: 2;
+    }
+    .member-card .name {
+      font-size: 1.5rem;
+      font-weight: 500;
+      text-align: center;
+      margin: 35px 0 5px 0;
+      text-shadow: none;
+      position: relative;
+      z-index: 2;
+    }
+    .member-card .tier {
+      font-size: 1rem;
+      text-align: center;
+      margin: 0;
+      font-family:'Orbitron',sans-serif;
+      text-shadow: none;
+      position: relative;
+      z-index: 2;
+    }
+    .member-card .tier.gold { color: var(--gold); }
+    .member-card .tier.silver { color: var(--silver); }
+    .member-card .tier.bronze { color: var(--bronze); }
+    .member-card .validity {
+      font-size: 1rem;
+      color: var(--muted);
+      text-align: center;
+      margin: 5px 0;
+      text-shadow: none;
+      position: relative;
+      z-index: 2;
+    }
+    .member-card .status {
+      font-size: 1.1rem;
+      font-weight: 700;
+      text-align: center;
+      letter-spacing: 1px;
+      margin-top: auto;
+      text-shadow: none;
+      font-family:'Orbitron',sans-serif;
+      position: relative;
+      z-index: 2;
+    }
+    .member-card .status.active { color: var(--primary); }
+    .member-card .status.expired { color: #ff6666; }
+    
+    /* Efek mengkilap pada kartu member */
+    .member-card.shine-effect {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .member-card.shine-effect::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 60%;
+      height: 100%;
+      background: linear-gradient(to right, rgba(0, 255, 255, 0) 0%, rgba(0, 255, 255, 0.3) 50%, rgba(0, 255, 255, 0) 100%);
+      transform: skewX(-20deg);
+      transition: left 0.8s ease;
+      pointer-events: none;
+      z-index: 5;
+    }
+    .member-card.shine-effect:hover::before {
+      left: 150%;
+    }
+    
+    /* Modal Styling */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      visibility: hidden;
+      opacity: 0;
+      transition: visibility 0s, opacity 0.3s;
+    }
+    .modal-overlay.visible {
+      visibility: visible;
+      opacity: 1;
+    }
+    .modal-content {
+      background: rgba(18,20,35,0.98);
+      padding: 2.5rem;
+      border-radius: 6px;
+      box-shadow: 0 0 25px rgba(0,191,255,0.5);
+      text-align: center;
+      max-width: 450px;
+      width: 90%;
+      transform: scale(0.9);
+      transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      position: relative;
+      border: 1px solid var(--primary);
+    }
+    .modal-content::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--card-bg-image) no-repeat center center/cover;
+      opacity: 0.1;
+      z-index: -1;
+    }
+    .modal-overlay.visible .modal-content {
+      transform: scale(1);
+    }
+    .modal-content h3 {
+      color: var(--primary);
+      margin-bottom: 1rem;
+    }
+    .modal-content p {
+      margin-bottom: 1.5rem;
+    }
+    
+    /* Footer */
+    footer{
+      text-align:center;
+      padding:2rem;
+      background:rgba(0,0,0,0.7);
+      color:var(--muted);
+      font-size:.9rem;
+      border-top:1px solid rgba(0,191,255,0.1);
     }
   </style>
 </head>
 <body>
 
-  <!-- Video Background -->
-  <video autoplay muted loop playsinline id="bgVideo">
-    <source src="https://cdn.pixabay.com/video/2021/03/06/67116-521253275_large.mp4" type="video/mp4">
+  <video autoplay muted loop playsinline id="bg-video">
+    <source src="https://cdn.pixabay.com/video/2021/08/06/84086-584871133_large.mp4" type="video/mp4">
+    <img src="https://placehold.co/1920x1080/080A1A/00BFFF?text=ARAYA+PORTAL" alt="Background">
   </video>
 
-  <!-- Title -->
-  <h1>LEADERBOARD MEMBER ARAYA GAMESTATION</h1>
+  <section class="hero container" style="text-align:center">
+    <h1>ARAYA MEMBER PORTAL</h1>
+    <p style="font-size:1.1rem; color: var(--text); text-shadow:0 0 10px rgba(0,255,255,0.4);">Bergabung di komunitas gamer ARAYA — akses benefit, leaderboard, turnamen & promo eksklusif.</p>
+    <div style="margin-top:2.5rem">
+      <a href="#login" class="btn primary">Login Member</a>
+      <a href="#daftar" class="btn accent">Daftar Sekarang</a>
+    </div>
+  </section>
 
-  <!-- Leaderboard -->
-  <div class="leaderboard-container">
-    <table id="leaderboard">
-      <thead>
-        <tr>
-          <th>Rank</th>
-          <th>Nama</th>
-          <th>Point</th>
-        </tr>
-      </thead>
-      <tbody></tbody>
-    </table>
-  </div>
+  <section id="login">
+    <div class="container">
+      <h2>Login Member</h2>
+      <div id="memberBox" class="card">
+        <form id="loginForm">
+          <input type="text" id="memberName" placeholder="Nama" required>
+          <input type="text" id="memberId" placeholder="ID Member" required>
+          <button type="submit" class="btn primary">Login</button>
+        </form>
+      </div>
+    </div>
+  </section>
 
-  <!-- Footer -->
+  <section id="benefit">
+    <div class="container">
+      <h2>Tier Membership & Benefit</h2>
+      <div class="grid grid-3">
+
+        <div class="card tier bronze">
+          <h3>BRONZE</h3>
+          <p><strong>Harga:</strong> Rp 50.000</p>
+          <ul>
+            <li>Akses VIP Per Jam</li>
+            <li>Free 1x Bermain PS4 Standar (1 jam / bulan)</li>
+            <li>Hadiah langsung untuk Top 3</li>
+            <li>Leaderboard (dihitung setiap tanggal 11 Mei)</li>
+            <li>Hadiah undian untuk Top 4–7 (1 slot turnamen)</li>
+            <li>Masa berlaku keanggotaan 1 bulan</li>
+          </ul>
+        </div>
+
+        <div class="card tier silver">
+          <h3>SILVER</h3>
+          <p><strong>Harga:</strong> Rp 100.000</p>
+          <ul>
+            <li>Akses VIP Per Jam</li>
+            <li>Free Bermain PS4 Standar (2 jam / bulan)</li>
+            <li>Free 1 Microphone untuk Premiere Room</li>
+            <li>Free 1 jam akses VIP Room setiap bulan</li>
+            <li>Free 1 User tambahan VIP Room</li>
+            <li>Hadiah langsung untuk Top 3</li>
+            <li>Leaderboard (dihitung setiap tanggal 11 Mei)</li>
+            <li>Hadiah undian untuk Top 4–7 (3 slot turnamen)</li>
+            <li>Masa berlaku keanggotaan 3 bulan</li>
+          </ul>
+        </div>
+
+        <div class="card tier gold">
+          <h3>GOLD</h3>
+          <p><strong>Harga:</strong> Rp 150.000</p>
+          <ul>
+            <li>Akses VIP Per Jam</li>
+            <li>Free Bermain PS4 Standar (3 jam / bulan)</li>
+            <li>Free 2 Microphone untuk Premiere Room</li>
+            <li>Free 1 jam akses Premiere Room setiap bulan</li>
+            <li>Free 2 User tambahan untuk VIP & Premiere Room</li>
+            <li>Hadiah langsung untuk Top 3 Leaderboard (11 Mei)</li>
+            <li>Hadiah undian untuk Top 4–7 (6 slot turnamen)</li>
+            <li>Masa berlaku keanggotaan 6 bulan</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="card" style="margin-top:1rem">
+        <h3>Syarat & Ketentuan</h3>
+        <ul>
+          <li>Slot turnamen tiap tier maksimal 1 slot per turnamen.</li>
+          <li>Slot turnamen tidak berlaku bila poin bulanan &lt; 250.</li>
+          <li>Poin turnamen adalah akumulasi poin bulanan.</li>
+          <li>Poin leaderboard adalah akumulasi poin selama masa aktif membership.</li>
+          <li>Poin hangus jika membership berakhir tanpa perpanjangan.</li>
+          <li>Sisa poin tersimpan jika perpanjangan dilakukan sebelum masa aktif habis.</li>
+          <li>Sisa poin hilang jika perpanjangan dilakukan setelah masa aktif habis.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="leaderboard">
+    <div class="container">
+      <h2>Leaderboard</h2>
+
+      <div class="tabs">
+        <button class="tab-btn active" data-target="all">All Season</button>
+        <button class="tab-btn" data-target="s1">Season 1</button>
+      </div>
+
+      <div id="leaderboard-container" class="leaderboard-container">
+        <table>
+          </table>
+      </div>
+  </section>
+
+  <section id="turnamen">
+    <div class="container">
+      <h2>Turnamen</h2>
+
+      <div class="card">
+        <h3>PES 2025</h3>
+        <p>Khusus member.</p>
+        <a class="btn accent join-btn" data-turnamen="PES 2025">
+          Daftar Sekarang
+        </a>
+      </div>
+    </div>
+  </section>
+  <section id="daftar">
+    <div class="container">
+      <h2>Price List</h2>
+      <div class="card">
+        <ul>
+          <li>Bronze: Rp50.000</li>
+          <li>Silver: Rp100.000</li>
+          <li>Gold: Rp150.000</li>
+        </ul>
+        <p style="margin-top:.8rem;color:var(--primary)"></p>
+        <a class="btn primary" style="margin-top:.8rem"
+           target="_blank"
+           href="https://wa.me/6281234567890?text=Saya%20ingin%20daftar%20member%20ARAYA">
+          Daftar Sekarang
+        </a>
+      </div>
+    </div>
+  </section>
+  <section id="faq">
+    <div class="container">
+      <h2>FAQ Member</h2>
+      <div class="card">
+        <h3 style="margin-bottom:.5rem">Cara daftar?</h3>
+        <p>Hubungi admin via WhatsApp, pilih tier, lalu lakukan pembayaran.</p>
+      </div>
+      <div class="card">
+        <h3 style="margin-bottom:.5rem">Bisa upgrade tier?</h3>
+        <p>Bisa banget, Hubungi admin via WhatsApp, pilih upgarade tier, lalu lakukan pembayaran.</p>
+      </div>
+      <div class="card">
+        <h3 style="margin-bottom:.5rem">Cara ikut turnamen?</h3>
+        <p>Login member, lalu klik tombol daftar turnamen yang tersedia, (Syarat & Ketentuan Berlaku).</p>
+      </div>
+    </div>
+  </section>
+
   <footer>Powered by ARAYA Gamestation</footer>
 
-  <!-- Scripts -->
+  <div id="statusModal" class="modal-overlay">
+    <div class="modal-content">
+      <h3 id="modalTitle"></h3>
+      <p id="modalMessage"></p>
+      <button class="btn primary" onclick="document.getElementById('statusModal').classList.remove('visible')">OK</button>
+    </div>
+  </div>
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
   <script>
-    const sheetCsvUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTsla4DIK8GQSXOAj5eMWVCMhThbuEMpcOMZBcYt9mPzKq_OGOS5MiZmlB-y8I9D_OOc9oIbxFaPoE7/pub?gid=1706144092&single=true&output=csv';
+    // Variable global untuk menyimpan status member
+    let memberData = null;
+    let loggedIn = false;
+    
+    // URL untuk mengirim data pendaftaran turnamen ke Apps Script
+    const appsScriptUrl = 'https://script.google.com/macros/s/AKfycbxysIdB2l_ON4B0Ue52clx5o-HVx4lDfuGnAe0ikTQx6FenTvHnSkVcGZmtOWZ0EhM7Pg/exec'; 
 
-    Papa.parse(sheetCsvUrl, {
-      download: true,
-      header: true,
-      complete: function(results) {
-        const data = results.data.filter(row => row.NAMA && row.POIN);
-        const tbody = document.querySelector("#leaderboard tbody");
+    const isTournamentRegistrationOpen = true;
 
-        data.forEach((row, i) => {
-          const tr = document.createElement("tr");
+    // Fungsi untuk menampilkan modal
+    function showModal(title, message) {
+      const modal = document.getElementById('statusModal');
+      document.getElementById('modalTitle').innerText = title;
+      document.getElementById('modalMessage').innerText = message;
+      modal.classList.add('visible');
+    }
 
-          // Tambahkan class rank
-          if (i === 0) tr.className = "top1";
-          else if (i === 1) tr.className = "top2";
-          else if (i === 2) tr.className = "top3";
+    // Fungsi untuk memeriksa dan mengaktifkan/menonaktifkan tombol turnamen
+    function updateJoinButtons() {
+      const joinButtons = document.querySelectorAll('.join-btn');
+      joinButtons.forEach(btn => {
+        if (!isTournamentRegistrationOpen) {
+          btn.disabled = true;
+          btn.textContent = "Coming Soon";
+        } else {
+          const isEligible = loggedIn && 
+                             memberData && 
+                             memberData.STATUS && 
+                             memberData.STATUS.toLowerCase() === 'aktif' && 
+                             parseInt(memberData['POIN SEASON'], 10) >= 250;
+          
+          if (isEligible) {
+            btn.disabled = false;
+            btn.textContent = "Daftar Sekarang";
+          } else {
+            btn.disabled = true;
+            btn.textContent = "Daftar Sekarang";
+          }
+        }
+      });
+    }
 
-          // Emoji rank
-          let medal = "";
-          if (i === 0) medal = "🥇";
-          else if (i === 1) medal = "🥈";
-          else if (i === 2) medal = "🥉";
+    async function handleJoinClick(e) {
+      e.preventDefault();
 
-          // Buat sel tabel
-          const tdRank = document.createElement("td");
-          tdRank.textContent = medal || (i + 1);
-
-          const tdName = document.createElement("td");
-          tdName.textContent = row.NAMA;
-
-          const tdPoint = document.createElement("td");
-          tdPoint.textContent = row.POIN;
-
-          // Tambah ke row
-          tr.appendChild(tdRank);
-          tr.appendChild(tdName);
-          tr.appendChild(tdPoint);
-
-          // Tambah ke tbody
-          tbody.appendChild(tr);
-        });
-      },
-      error: function(err) {
-        console.error("Database gagal dimuat:", err);
+      const btn = e.target;
+      if (btn.disabled) {
+        if (!isTournamentRegistrationOpen) {
+          showModal('Pendaftaran Belum Dibuka', 'Turnamen ini akan segera dimulai. Pantau terus info terbaru.');
+        } else if (!loggedIn) {
+          showModal('Login Diperlukan', 'Silakan login terlebih dahulu untuk mendaftar turnamen.');
+        } else if (!memberData || !memberData.STATUS || memberData.STATUS.toLowerCase() !== 'aktif') {
+          showModal('Status Keanggotaan', 'Status member anda EXPIRED. Silakan perbarui keanggotaan untuk mendaftar.');
+        } else if (parseInt(memberData['POIN SEASON'], 10) < 250) {
+          showModal('Poin Tidak Cukup', 'Poin Anda untuk season ini kurang dari 250. Perbanyak poin Anda untuk bisa ikut turnamen.');
+        }
+        return;
       }
+
+      if (memberData) {
+        const payload = new URLSearchParams({
+          'ID MEMBER': memberData['ID MEMBER'],
+        });
+
+        btn.disabled = true;
+        btn.textContent = 'Memproses...';
+
+        try {
+          const response = await fetch(appsScriptUrl, {
+            method: 'POST',
+            body: payload,
+          });
+
+          const result = await response.json();
+          if (response.ok && result.result === 'success') {
+            showModal('Pendaftaran Berhasil', 'Data Anda telah berhasil didaftarkan. Terima kasih!');
+            btn.textContent = 'Terdaftar';
+          } else {
+            showModal('Pendaftaran Gagal', result.message || 'Terjadi kesalahan saat mengirim data. Silakan coba lagi atau hubungi admin.');
+            btn.disabled = false;
+            btn.textContent = 'Daftar Sekarang';
+          }
+        } catch (error) {
+          console.error('Error:', error);
+          showModal('Pendaftaran Gagal', 'Terjadi kesalahan jaringan. Silakan coba lagi.');
+          btn.disabled = false;
+          btn.textContent = 'Daftar Sekarang';
+        }
+      } else {
+        showModal('Kesalahan', 'Data member tidak ditemukan. Silakan coba login ulang.');
+      }
+    }
+
+    // Tambahkan event listener ke setiap tombol daftar turnamen
+    document.querySelectorAll('.join-btn').forEach(btn => {
+      btn.addEventListener('click', handleJoinClick);
+    });
+    
+    // Spreadsheet DATA MEMBER URL
+    const memberSheetUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTsla4DIK8GQSXOAj5eMWVCMhThbuEMpcOMZBcYt9mPzKq_OGOS5MiZmlB-y8I9D_OOc9oIbxFaPoE7/pub?gid=0&single=true&output=csv";
+    
+    // Spreadsheet LEADERBOARD URLS
+    const leaderboardUrls = {
+      all: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTsla4DIK8GQSXOAj5eMWVCMhThbuEMpcOMZBcYt9mPzKq_OGOS5MiZmlB-y8I9D_OOc9oIbxFaPoE7/pub?gid=1706144092&single=true&output=csv",
+      s1: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTsla4DIK8GQSXOAj5eMWVCMhThbuEMpcOMZBcYt9mPzKq_OGOS5MiZmlB-y8I9D_OOc9oIbxFaPoE7/pub?gid=1706144092&single=true&output=csv",
+    };
+    
+    // Fungsi untuk memuat dan menampilkan data leaderboard
+    function loadLeaderboard(seasonKey) {
+      const url = leaderboardUrls[seasonKey];
+      if (!url) return;
+      
+      const container = document.getElementById('leaderboard-container');
+      const table = container.querySelector('table');
+
+      // Animasi fade-out
+      container.classList.add('fade-out');
+      // Tunggu transisi fade-out selesai
+      setTimeout(() => {
+      // Hapus konten tabel
+      table.innerHTML = ''; 
+
+        Papa.parse(url, {
+          download: true,
+          header: true,
+          complete: function(results) {
+            const data = results.data
+              .filter(r => r.NAMA && r.POIN)
+              .map(r => ({ NAMA: r.NAMA, POIN: r.POIN }));
+            
+            // Buat thead
+            const thead = document.createElement('thead');
+            thead.innerHTML = `
+              <tr>
+                <th>Rank</th>
+                <th>Nama</th>
+                <th>Point</th>
+              </tr>
+            `;
+            table.appendChild(thead);
+
+            // Buat tbody
+            const tbody = document.createElement('tbody');
+            data.forEach((row, i) => {
+              const tr = document.createElement("tr");
+              if (i === 0) tr.className = "top1";
+              else if (i === 1) tr.className = "top2";
+              else if (i === 2) tr.className = "top3";
+              const rank = i === 0 ? "🥇" : i === 1 ? "🥈" : i === 2 ? "🥉" : (i + 1);
+              tr.innerHTML = `<td>${rank}</td><td>${row.NAMA}</td><td>${row.POIN}</td>`;
+              tbody.appendChild(tr);
+            });
+            table.appendChild(tbody);
+            
+            // Animasi fade-in
+            container.classList.remove('fade-out');
+          },
+          error: function(err) {
+            console.error("Gagal load leaderboard:", err);
+            // Hapus fade-out jika terjadi error
+            container.classList.remove('fade-out');
+          }
+        });
+      }, 300); // Durasi transisi
+    }
+
+    // Load All Season saat halaman dimuat
+    document.addEventListener('DOMContentLoaded', () => {
+      loadLeaderboard("all");
+      updateJoinButtons();
+    });
+
+    // Tab switching
+    document.querySelectorAll(".tab-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        // Hapus kelas 'active' dari semua tombol dan tambahkan ke tombol yang diklik
+        document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        
+        const target = btn.dataset.target;
+        loadLeaderboard(target);
+      });
+    });
+
+    // Login → Kartu Member Digital
+    document.getElementById("loginForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const inputName = document.getElementById("memberName").value.trim().toLowerCase();
+      const inputId = document.getElementById("memberId").value.trim().toLowerCase();
+
+      Papa.parse(memberSheetUrl, {
+        download: true,
+        header: true,
+        complete: function(results) {
+          const data = results.data;
+          // Filter data yang tidak lengkap atau kosong
+          const member = data.find(row => 
+            row["NAMA"]?.toLowerCase() === inputName &&
+            row["ID MEMBER"]?.toLowerCase() === inputId
+          );
+
+          const box = document.getElementById("memberBox");
+          box.innerHTML = "";
+
+          if (member) {
+            loggedIn = true;
+            memberData = member;
+            const tier = (member["TIER"] || '').toLowerCase();
+            const status = (member["STATUS"] || '').toLowerCase();
+            const start = member["START"] || 'N/A';
+            const expired = member["EXPIRED"] || 'N/A';
+
+            const statusClass = status === 'aktif' ? 'active' : 'expired';
+            
+            box.innerHTML = `
+              <div class="member-card shine-effect">
+                <h3>ARAYA MEMBER</h3>
+                <p class="id">${member["ID MEMBER"] || 'N/A'}</p>
+                <p class="name">${member["NAMA"] || 'N/A'}</p>
+                <p class="tier ${tier}">${member["TIER"] || 'N/A'}</p>
+                <p class="validity">${start} – ${expired}</p>
+                <p class="status ${statusClass}">${member["STATUS"] || 'Unknown'}</p>
+              </div>
+              <div style="text-align:center;margin-top:.8rem">
+                <button class="btn ghost" onclick="location.reload()">Logout</button>
+              </div>
+            `;
+            console.log("Login berhasil. Data member:", memberData);
+            updateJoinButtons();
+          } else {
+            loggedIn = false;
+            memberData = null;
+            box.innerHTML = `
+              <div class="card" style="text-align:center">
+                <h3>Belum Terdaftar</h3>
+                <p>Nama atau ID tidak ditemukan.</p>
+                <p>Silakan daftar untuk menjadi member.</p>
+                <button class="btn ghost" onclick="location.reload()">Kembali</button>
+              </div>
+            `;
+            console.log("Login gagal. Nama atau ID tidak ditemukan.");
+            updateJoinButtons();
+          }
+        },
+        error: function(err, file) {
+            console.error("Gagal mengunduh spreadsheet. Pastikan URL-nya benar dan dapat diakses publik.", err);
+            showModal('Kesalahan Jaringan', 'Gagal memuat data member. Silakan periksa koneksi internet Anda atau hubungi admin.');
+        }
+      });
     });
   </script>
-</body>
 
+</body>
 </html>
