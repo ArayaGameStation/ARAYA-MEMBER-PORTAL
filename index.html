@@ -464,7 +464,7 @@
 
   <section class="hero container" style="text-align:center">
     <h1>ARAYA MEMBER PORTAL</h1>
-    <p style="font-size:1.1rem; color: var(--text); text-shadow:0 0 10px rgba(0,255,255,0.4);">Bergabung di komunitas gamer ARAYA — akses benefit, leaderboard, turnamen & promo eksklusif.</p>
+    <p style="font-size:1.1rem; color: var(--text); text-shadow:0 0 10px rgba(0,255,255,0.4);">Bergabung di komunitas ARAYA GAMESTATION — akses benefit, leaderboard, turnamen & promo eksklusif.</p>
     <div style="margin-top:2.5rem">
       <a href="#login" class="btn primary">Login Member</a>
       <a href="#daftar" class="btn accent">Daftar Sekarang</a>
@@ -571,9 +571,9 @@
 
       <div class="card">
         <h3>PES 2025</h3>
-        <p>Khusus member.</p>
-        <a class="btn accent join-btn" data-turnamen="PES 2025">
-          Daftar Sekarang
+        <p>Khusus member</p>
+        <a class="btn accent join-btn" id="comingSoonBtn">
+          Coming Soon
         </a>
       </div>
     </div>
@@ -590,7 +590,7 @@
         <p style="margin-top:.8rem;color:var(--primary)"></p>
         <a class="btn primary" style="margin-top:.8rem"
            target="_blank"
-           href="https://wa.me/6281234567890?text=Saya%20ingin%20daftar%20member%20ARAYA">
+           href="https://wa.me/6281350502525?text=Halo%20min">
           Daftar Sekarang
         </a>
       </div>
@@ -609,7 +609,8 @@
       </div>
       <div class="card">
         <h3 style="margin-bottom:.5rem">Cara ikut turnamen?</h3>
-        <p>Login member, lalu klik tombol daftar turnamen yang tersedia, (Syarat & Ketentuan Berlaku).</p>
+        <p>Login member, lalu klik tombol daftar turnamen yang tersedia<p>
+        <p>(Syarat & Ketentuan Berlaku).</p>
       </div>
     </div>
   </section>
@@ -630,10 +631,8 @@
     let memberData = null;
     let loggedIn = false;
     
-    // URL untuk mengirim data pendaftaran turnamen ke Apps Script
-    const appsScriptUrl = 'https://script.google.com/macros/s/AKfycbxysIdB2l_ON4B0Ue52clx5o-HVx4lDfuGnAe0ikTQx6FenTvHnSkVcGZmtOWZ0EhM7Pg/exec'; 
-
-    const isTournamentRegistrationOpen = true;
+    // Variabel kontrol untuk pendaftaran turnamen
+    const isTournamentRegistrationOpen = false;
 
     // Fungsi untuk menampilkan modal
     function showModal(title, message) {
@@ -648,9 +647,11 @@
       const joinButtons = document.querySelectorAll('.join-btn');
       joinButtons.forEach(btn => {
         if (!isTournamentRegistrationOpen) {
+          // Jika pendaftaran ditutup, selalu tampilkan "Coming Soon" dan nonaktifkan tombol
           btn.disabled = true;
           btn.textContent = "Coming Soon";
         } else {
+          // Logika default jika pendaftaran dibuka
           const isEligible = loggedIn && 
                              memberData && 
                              memberData.STATUS && 
@@ -659,63 +660,33 @@
           
           if (isEligible) {
             btn.disabled = false;
-            btn.textContent = "Daftar Sekarang";
+            btn.textContent = "Daftar via WhatsApp";
+            btn.href = `https://wa.me/6281350502525?text=Halo%20min%20ulun%20mau%20daftar%20turnamen`;
           } else {
             btn.disabled = true;
-            btn.textContent = "Daftar Sekarang";
+            btn.textContent = "Daftar via WhatsApp";
+            btn.removeAttribute('href');
           }
         }
       });
     }
 
-    async function handleJoinClick(e) {
-      e.preventDefault();
-
-      const btn = e.target;
-      if (btn.disabled) {
-        if (!isTournamentRegistrationOpen) {
-          showModal('Pendaftaran Belum Dibuka', 'Turnamen ini akan segera dimulai. Pantau terus info terbaru.');
-        } else if (!loggedIn) {
+    // Fungsi untuk menangani klik tombol turnamen
+    function handleJoinClick(e) {
+      if (!isTournamentRegistrationOpen) {
+        e.preventDefault();
+        showModal('Pendaftaran Belum Dibuka', 'Turnamen akan segera dimulai. Pantau terus info terbaru di sosial media kami.');
+      } else if (e.target.disabled) {
+        e.preventDefault();
+        if (!loggedIn) {
           showModal('Login Diperlukan', 'Silakan login terlebih dahulu untuk mendaftar turnamen.');
         } else if (!memberData || !memberData.STATUS || memberData.STATUS.toLowerCase() !== 'aktif') {
           showModal('Status Keanggotaan', 'Status member anda EXPIRED. Silakan perbarui keanggotaan untuk mendaftar.');
         } else if (parseInt(memberData['POIN SEASON'], 10) < 250) {
           showModal('Poin Tidak Cukup', 'Poin Anda untuk season ini kurang dari 250. Perbanyak poin Anda untuk bisa ikut turnamen.');
+        } else {
+          showModal('Gagal', 'Terjadi kesalahan. Silakan coba lagi atau hubungi admin.');
         }
-        return;
-      }
-
-      if (memberData) {
-        const payload = new URLSearchParams({
-          'ID MEMBER': memberData['ID MEMBER'],
-        });
-
-        btn.disabled = true;
-        btn.textContent = 'Memproses...';
-
-        try {
-          const response = await fetch(appsScriptUrl, {
-            method: 'POST',
-            body: payload,
-          });
-
-          const result = await response.json();
-          if (response.ok && result.result === 'success') {
-            showModal('Pendaftaran Berhasil', 'Data Anda telah berhasil didaftarkan. Terima kasih!');
-            btn.textContent = 'Terdaftar';
-          } else {
-            showModal('Pendaftaran Gagal', result.message || 'Terjadi kesalahan saat mengirim data. Silakan coba lagi atau hubungi admin.');
-            btn.disabled = false;
-            btn.textContent = 'Daftar Sekarang';
-          }
-        } catch (error) {
-          console.error('Error:', error);
-          showModal('Pendaftaran Gagal', 'Terjadi kesalahan jaringan. Silakan coba lagi.');
-          btn.disabled = false;
-          btn.textContent = 'Daftar Sekarang';
-        }
-      } else {
-        showModal('Kesalahan', 'Data member tidak ditemukan. Silakan coba login ulang.');
       }
     }
 
@@ -724,10 +695,10 @@
       btn.addEventListener('click', handleJoinClick);
     });
     
-    // Spreadsheet DATA MEMBER URL
+    // Spreadsheet DATA MEMBER
     const memberSheetUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTsla4DIK8GQSXOAj5eMWVCMhThbuEMpcOMZBcYt9mPzKq_OGOS5MiZmlB-y8I9D_OOc9oIbxFaPoE7/pub?gid=0&single=true&output=csv";
     
-    // Spreadsheet LEADERBOARD URLS
+    // Spreadsheet LEADERBOARD
     const leaderboardUrls = {
       all: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTsla4DIK8GQSXOAj5eMWVCMhThbuEMpcOMZBcYt9mPzKq_OGOS5MiZmlB-y8I9D_OOc9oIbxFaPoE7/pub?gid=1706144092&single=true&output=csv",
       s1: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTsla4DIK8GQSXOAj5eMWVCMhThbuEMpcOMZBcYt9mPzKq_OGOS5MiZmlB-y8I9D_OOc9oIbxFaPoE7/pub?gid=1706144092&single=true&output=csv",
@@ -871,7 +842,7 @@
           }
         },
         error: function(err, file) {
-            console.error("Gagal mengunduh spreadsheet. Pastikan URL-nya benar dan dapat diakses publik.", err);
+            console.error("Gagal memuat data, Pastikan data dapat diakses publik.", err);
             showModal('Kesalahan Jaringan', 'Gagal memuat data member. Silakan periksa koneksi internet Anda atau hubungi admin.');
         }
       });
