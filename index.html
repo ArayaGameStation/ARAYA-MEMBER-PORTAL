@@ -2,117 +2,118 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ARAYA MEMBER PORTAL</title>
 
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
-
-  <style>
   
-    :root{
-      --bg:#080A1A;
-      --card-bg-image:url('https://i.imgur.com/nwbUELc.jpeg');
-      --line:rgba(0,191,255,0.2);
-      --text:#E0FFFF;
-      --muted:#9BBCEF;
-      --primary:#00BFFF;
-      --secondary:#00FFFF;
-      --accent:#ADD8E6;
-      
-   /* Tier Colors */
-     --bronze: linear-gradient(135deg, #8c4a2f 0%, #b87333 50%, #ff9f50 100%);
-     --silver: linear-gradient(135deg, #cbd8e6 0%, #a4c9f0 50%, #7abfff 100%);
-     --gold: linear-gradient(135deg, #ffce00 0%, #ffb800 50%, #ff9e00 100%);
+  <style>
+    :root {
+      --bg: #080A1A;
+      --card-bg-image: url('https://i.imgur.com/nwbUELc.jpeg');
+      --line: rgba(0, 191, 255, 0.2);
+      --text: #E0FFFF;
+      --muted: #9BBCEF;
+      --primary: #00BFFF;
+      --secondary: #00FFFF;
+      --accent: #ADD8E6;
+      --bronze: linear-gradient(135deg, #8c4a2f 0%, #b87333 50%, #ff9f50 100%);
+      --silver: linear-gradient(135deg, #cbd8e6 0%, #a4c9f0 50%, #7abfff 100%);
+      --gold: linear-gradient(135deg, #ffce00 0%, #ffb800 50%, #ff9e00 100%);
+    }
+
+    /* Video Background */
+    #bg-video {
+      position: fixed;
+      right: 0;
+      bottom: 0;
+      min-width: 100%;
+      min-height: 100%;
+      width: auto;
+      height: auto;
+      z-index: -1;
+      background: var(--bg);
+      object-fit: cover;
+      filter: brightness(0.4);
     }
     
     /* Global Styles */
-    *, ::before, ::after{box-sizing:border-box;margin:0;padding:0}
-    body{
-      font-family:'Poppins',sans-serif;
-      background:rgba(0,0,0,1);
-      color:var(--text);
-      line-height:1.6;
-      overflow-x:hidden;
-      position:relative;
+    *, ::before, ::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: rgba(0, 0, 0, 1);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+      position: relative;
     }
-    
-    /* Background Video */
-    #bg-video {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      z-index: -2;
-      filter: brightness(1) contrast(1) grayscale(0);
-    }
-
-    a{text-decoration:none}
-    h1,h2,h3{
-      font-family:'Orbitron',sans-serif;
-      color:var(--secondary);
-      margin-bottom:0.8rem;
-      text-shadow:0 0 15px var(--secondary);
+    a { text-decoration: none; }
+    h1, h2, h3 {
+      font-family: 'Orbitron', sans-serif;
+      color: var(--secondary);
+      margin-bottom: 0.8rem;
+      text-shadow: 0 0 15px var(--secondary);
       transition: color 0.3s, text-shadow 0.3s;
     }
-    h1{font-size:3.8rem;letter-spacing:3px}
-    h2{font-size:3rem;text-shadow:0 0 12px var(--secondary)}
-    h3{font-size:1.8rem;color:var(--primary)}
-    
-    section{padding:5rem 1.25rem;position:relative;z-index:1}
-    .container{max-width:1100px;margin:0 auto}
-    .btn{
-      padding:.8rem 2rem;
-      border:2px solid var(--primary);
-      background:rgba(0,191,255,0.08);
-      border-radius:4px;
-      cursor:pointer;
-      font-weight:600;
-      transition:.3s ease-in-out;
-      display:inline-block;
-      font-family:'Orbitron',sans-serif;
-      text-transform:uppercase;
-      letter-spacing:1px;
-      position:relative;
-      overflow:hidden;
-      color:var(--primary);
-      box-shadow:0 0 10px rgba(0,191,255,0.3);
-    }
-    .btn.primary{
-      background:var(--primary);
-      color:var(--bg);
-      border-color:var(--primary);
-      box-shadow:0 0 20px rgba(0,191,255,0.6);
-    }
-    .btn.accent{
-      background:var(--accent);
-      color:var(--bg);
-      border-color:var(--accent);
-      box-shadow:0 0 20px rgba(173,216,230,0.6);
-    }
-    .btn.ghost{
-      background:transparent;
-      border:2px solid var(--secondary);
-      color:var(--secondary);
-    }
-    .btn:hover:not(:disabled){
-      transform:translateY(-3px);
-      box-shadow:0 0 25px var(--secondary), 0 0 40px var(--primary);
-      border-color:var(--secondary);
-    }
-    .btn:disabled{cursor:not-allowed;opacity:.5}
-
-    .card{
+    h1 { font-size: 3.8rem; letter-spacing: 3px; }
+    h2 { font-size: 3rem; text-shadow: 0 0 12px var(--secondary); }
+    h3 { font-size: 1.8rem; color: var(--primary); }
+    section { padding: 5rem 1.25rem; position: relative; z-index: 1; }
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 1rem; }
+    .btn {
+      padding: .8rem 2rem;
+      border: 2px solid var(--primary);
+      background: rgba(0, 191, 255, 0.08);
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: .3s ease-in-out;
+      display: inline-block;
+      font-family: 'Orbitron', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 1px;
       position: relative;
-      border:1px solid var(--line);
-      border-radius:6px;
-      padding:2rem;
-      margin-bottom:1.5rem;
-      background:rgba(18,20,35,0.8);
-      box-shadow:0 0 10px rgba(0,191,255,0.2);
-      transition:transform .4s, box-shadow .4s, border-color .4s;
       overflow: hidden;
+      color: var(--primary);
+      box-shadow: 0 0 10px rgba(0, 191, 255, 0.3);
+    }
+    .btn.primary {
+      background: var(--primary);
+      color: var(--bg);
+      border-color: var(--primary);
+      box-shadow: 0 0 20px rgba(0, 191, 255, 0.6);
+    }
+    .btn.accent {
+      background: var(--accent);
+      color: var(--bg);
+      border-color: var(--accent);
+      box-shadow: 0 0 20px rgba(173, 216, 230, 0.6);
+    }
+    .btn.ghost {
+      background: transparent;
+      border: 2px solid var(--secondary);
+      color: var(--secondary);
+    }
+    .btn:hover:not(:disabled) {
+      transform: translateY(-3px);
+      box-shadow: 0 0 25px var(--secondary), 0 0 40px var(--primary);
+      border-color: var(--secondary);
+    }
+    .btn:disabled { cursor: not-allowed; opacity: .5; }
+
+    /* Card */
+    .card {
+      position: relative;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 2rem;
+      margin-bottom: 1.5rem;
+      background: rgba(18, 20, 35, 0.8);
+      box-shadow: 0 0 10px rgba(0, 191, 255, 0.2);
+      transition: transform .4s, box-shadow .4s, border-color .4s;
+      overflow: hidden;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
     }
     .card::before {
       content: '';
@@ -130,144 +131,148 @@
       position: relative;
       z-index: 1;
     }
-    .card:hover{
-      transform:translateY(-5px);
-      box-shadow:0 15px 35px rgba(0,255,255,0.3);
-      border-color:var(--secondary);
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(0, 255, 255, 0.3);
+      border-color: var(--secondary);
     }
-    
-    input{
-      padding:.9rem;
-      border-radius:4px;
-      border:1px solid var(--line);
-      background:rgba(18,20,35,0.9);
-      color:var(--text);
-      width:100%;
-      margin-bottom:1rem;
-      font-family:'Poppins',sans-serif;
-      transition:all .3s ease;
+
+    /* Form & Input */
+    input {
+      padding: .9rem;
+      border-radius: 4px;
+      border: 1px solid var(--line);
+      background: rgba(18, 20, 35, 0.9);
+      color: var(--text);
+      width: 100%;
+      margin-bottom: 1rem;
+      font-family: 'Poppins', sans-serif;
+      transition: all .3s ease;
     }
-    input:focus{
-      outline:none;
-      border-color:var(--secondary);
-      box-shadow:0 0 12px rgba(0,255,255,0.4);
+    input:focus {
+      outline: none;
+      border-color: var(--secondary);
+      box-shadow: 0 0 12px rgba(0, 255, 255, 0.4);
     }
-    
-    .grid{display:grid;gap:2rem}
-    @media(min-width:768px){.grid-3{grid-template-columns:repeat(3,1fr)}}
-    ul{margin-left:1.5rem;list-style:none}
-    ul li{position:relative;padding-left:1.5rem;margin-bottom:.6rem}
-    ul li::before{
-      content:'';
-      position:absolute;
-      left:0;top:50%;
-      transform:translateY(-50%);
-      width:8px;height:8px;
-      background:var(--secondary);
-      border-radius:50%;
-      box-shadow:0 0 8px var(--secondary);
+
+    /* Grid & List */
+    .grid { display: grid; gap: 2rem; }
+    .grid-3 { grid-template-columns: repeat(3, 1fr); }
+    ul { margin-left: 1.5rem; list-style: none; }
+    ul li { position: relative; padding-left: 1.5rem; margin-bottom: .6rem; }
+    ul li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 8px;
+      height: 8px;
+      background: var(--secondary);
+      border-radius: 50%;
+      box-shadow: 0 0 8px var(--secondary);
     }
 
     /* Tier Cards */
-    .tier{
-      border-radius:6px;
-      text-align:left;
-      position:relative;
-      overflow:hidden;
-      transition:transform .3s, box-shadow .3s;
-      background:rgba(18,20,35,0.9);
-      border:1px solid;
+    .tier {
+      border-radius: 6px;
+      text-align: left;
+      position: relative;
+      overflow: hidden;
+      transition: transform .3s, box-shadow .3s;
+      background: rgba(18, 20, 35, 0.9);
+      border: 1px solid;
     }
-    .tier h3{color:var(--text);text-shadow:none;text-align:center}
-    .tier.bronze{
-      background:var(--bronze);
-      border-color:var(--bronze);
-      box-shadow:0 0 10px rgba(205,127,50,.35)
+    .tier h3 { color: var(--text); text-shadow: none; text-align: center; }
+    .tier.bronze {
+      background: var(--bronze);
+      border-color: var(--bronze);
+      box-shadow: 0 0 10px rgba(205, 127, 50, .35);
     }
-    .tier.silver{
-      background:var(--silver);
-      border-color:var(--silver);
-      box-shadow:0 0 10px rgba(192,192,192,.35)
+    .tier.silver {
+      background: var(--silver);
+      border-color: var(--silver);
+      box-shadow: 0 0 10px rgba(192, 192, 192, .35);
     }
-    .tier.gold{
-      background:var(--gold);
-      border-color:var(--gold);
-      box-shadow:0 0 10px rgba(255,215,0,.4)
+    .tier.gold {
+      background: var(--gold);
+      border-color: var(--gold);
+      box-shadow: 0 0 10px rgba(255, 215, 0, .4);
     }
-    .tier p strong{color:var(--text)}
-    .tier ul li{
-      font-weight:500;
-      color:var(--text);
-      text-shadow:none;
-      padding-left:1.5rem;
+    .tier p strong { color: var(--text); }
+    .tier ul li {
+      font-weight: 500;
+      color: var(--text);
+      text-shadow: none;
+      padding-left: 1.5rem;
     }
-    .tier ul li::before{
-      background:var(--secondary);
-      box-shadow:0 0 5px var(--secondary);
+    .tier ul li::before {
+      background: var(--secondary);
+      box-shadow: 0 0 5px var(--secondary);
     }
     .tier:hover {
       transform: translateY(-8px);
     }
 
     /* Tabs Leaderboard */
-    .tabs{display:flex;flex-wrap:wrap;gap:.8rem;justify-content:center;margin:1.5rem 0 1.5rem}
-    .tab-btn{
-      background:rgba(18,20,35,0.8);
-      color:var(--primary);
-      border:1px solid var(--primary);
-      border-radius:4px;
-      padding:.6rem 1.2rem;
-      font-weight:600;
-      cursor:pointer;
-      transition:.2s;
+    .tabs { display: flex; flex-wrap: wrap; gap: .8rem; justify-content: center; margin: 1.5rem 0 1.5rem; }
+    .tab-btn {
+      background: rgba(18, 20, 35, 0.8);
+      color: var(--primary);
+      border: 1px solid var(--primary);
+      border-radius: 4px;
+      padding: .6rem 1.2rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: .2s;
     }
-    .tab-btn.active{
-      background:var(--primary);
-      color:var(--bg);
-      box-shadow:0 0 10px rgba(0,191,255,0.5);
-      border-color:var(--primary);
+    .tab-btn.active {
+      background: var(--primary);
+      color: var(--bg);
+      box-shadow: 0 0 10px rgba(0, 191, 255, 0.5);
+      border-color: var(--primary);
     }
 
     /* Leaderboard Table */
-    .leaderboard-container{
-      background:rgba(18,20,35,0.8);
-      width:100%;
-      max-height:550px;
-      overflow-y:auto;
-      box-shadow:0 0 10px rgba(0,191,255,0.2);
-      border:1px solid var(--line);
-      border-radius:6px;
-      
-      /* Animasi fade */
-      opacity:1;
-      transition:opacity 0.3s ease-in-out;
+    .leaderboard-container {
+      background: rgba(18, 20, 35, 0.8);
+      width: 100%;
+      max-height: 550px;
+      overflow-y: auto;
+      box-shadow: 0 0 10px rgba(0, 191, 255, 0.2);
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      opacity: 1;
+      transition: opacity 0.3s ease-in-out;
     }
-    .leaderboard-container.fade-out{
-      opacity:0;
+    .leaderboard-container.fade-out { opacity: 0; }
+    .leaderboard-container::-webkit-scrollbar { width: 8px; }
+    .leaderboard-container::-webkit-scrollbar-thumb { background-color: var(--primary); border-radius: 4px; }
+    .leaderboard-container::-webkit-scrollbar-track { background-color: transparent; }
+    table { width: 100%; border-collapse: collapse; color: #fff; }
+    th, td { padding: 12px 14px; border-bottom: 1px solid rgba(0, 191, 255, .1); text-align: center; }
+    th {
+      background: linear-gradient(90deg, rgba(18, 20, 35, 0.9), rgba(28, 30, 45, 0.9));
+      color: var(--primary);
+      letter-spacing: .5px;
+      position: sticky;
+      top: 0;
+      z-index: 1;
+      text-transform: uppercase;
+      font-family: 'Orbitron', sans-serif;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
     }
-    .leaderboard-container::-webkit-scrollbar{width:8px}
-    .leaderboard-container::-webkit-scrollbar-thumb{background-color:var(--primary);border-radius:4px}
-    .leaderboard-container::-webkit-scrollbar-track{background-color:transparent}
-
-    table{width:100%;border-collapse:collapse;color:#fff}
-    th,td{padding:12px 14px;border-bottom:1px solid rgba(0,191,255,.1);text-align:center}
-    th{
-      background:linear-gradient(90deg, rgba(18,20,35,0.9), rgba(28,30,45,0.9));
-      color:var(--primary);letter-spacing:.5px;position:sticky;top:0;z-index:1;
-      text-transform:uppercase;
-      font-family:'Orbitron',sans-serif;
-      box-shadow:0 2px 8px rgba(0,0,0,0.4);
-    }
-    tr:nth-child(even){background:rgba(0,255,255,0.03)}
-    tr:hover{background:rgba(0,191,255,.1);transition:.25s}
+    tr:nth-child(even) { background: rgba(0, 255, 255, 0.03); }
+    tr:hover { background: rgba(0, 191, 255, .1); transition: .25s; }
 
     /* Member ID Card */
     .member-card {
-      width: 340px;
+      width: 90%;
+      max-width: 340px;
       height: 200px;
       border: 1px solid var(--primary);
       border-radius: 6px;
-      box-shadow: 0 0 15px rgba(0,191,255,.4);
+      box-shadow: 0 0 15px rgba(0, 191, 255, .4);
       margin: 1.5rem auto;
       padding: 1.5rem;
       display: flex;
@@ -283,27 +288,21 @@
       transform: translateZ(0);
       transition: box-shadow 0.4s ease-in-out, transform 0.3s ease-out;
     }
-
     .member-card:hover {
-        box-shadow: 0 0 30px var(--secondary);
-        transform: translateY(-5px);
+      box-shadow: 0 0 30px var(--secondary);
+      transform: translateY(-5px);
     }
-
-    .member-card::before, .member-card::after {
-        content: none;
-    }
-
+    .member-card::before, .member-card::after { content: none; }
     .member-card::after {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0,0,0,0.5);
-        z-index: 1;
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 1;
     }
-
     .member-card h3 {
       font-size: 1.1rem;
       color: var(--secondary);
@@ -319,7 +318,7 @@
       font-size: 0.9rem;
       color: var(--muted);
       text-shadow: none;
-      font-family:'Orbitron',sans-serif;
+      font-family: 'Orbitron', sans-serif;
       z-index: 2;
     }
     .member-card .name {
@@ -335,7 +334,7 @@
       font-size: 1rem;
       text-align: center;
       margin: 0;
-      font-family:'Orbitron',sans-serif;
+      font-family: 'Orbitron', sans-serif;
       text-shadow: none;
       position: relative;
       z-index: 2;
@@ -359,19 +358,15 @@
       letter-spacing: 1px;
       margin-top: auto;
       text-shadow: none;
-      font-family:'Orbitron',sans-serif;
+      font-family: 'Orbitron', sans-serif;
       position: relative;
       z-index: 2;
     }
     .member-card .status.active { color: var(--primary); }
     .member-card .status.expired { color: #ff6666; }
-    
-    /* Efek mengkilap pada kartu member */
-    .member-card.shine-effect {
-      position: relative;
-      overflow: hidden;
-    }
 
+    /* Shine effect */
+    .member-card.shine-effect { position: relative; overflow: hidden; }
     .member-card.shine-effect::before {
       content: '';
       position: absolute;
@@ -385,10 +380,8 @@
       pointer-events: none;
       z-index: 5;
     }
-    .member-card.shine-effect:hover::before {
-      left: 150%;
-    }
-    
+    .member-card.shine-effect:hover::before { left: 150%; }
+
     /* Modal Styling */
     .modal-overlay {
       position: fixed;
@@ -405,15 +398,12 @@
       opacity: 0;
       transition: visibility 0s, opacity 0.3s;
     }
-    .modal-overlay.visible {
-      visibility: visible;
-      opacity: 1;
-    }
+    .modal-overlay.visible { visibility: visible; opacity: 1; }
     .modal-content {
-      background: rgba(18,20,35,0.98);
+      background: rgba(18, 20, 35, 0.98);
       padding: 2.5rem;
       border-radius: 6px;
-      box-shadow: 0 0 25px rgba(0,191,255,0.5);
+      box-shadow: 0 0 25px rgba(0, 191, 255, 0.5);
       text-align: center;
       max-width: 450px;
       width: 90%;
@@ -433,30 +423,37 @@
       opacity: 0.1;
       z-index: -1;
     }
-    .modal-overlay.visible .modal-content {
-      transform: scale(1);
-    }
-    .modal-content h3 {
-      color: var(--primary);
-      margin-bottom: 1rem;
-    }
-    .modal-content p {
-      margin-bottom: 1.5rem;
-    }
-    
+    .modal-overlay.visible .modal-content { transform: scale(1); }
+    .modal-content h3 { color: var(--primary); margin-bottom: 1rem; }
+    .modal-content p { margin-bottom: 1.5rem; }
+
     /* Footer */
-    footer{
-      text-align:center;
-      padding:2rem;
-      background:rgba(0,0,0,0.7);
-      color:var(--muted);
-      font-size:.9rem;
-      border-top:1px solid rgba(0,191,255,0.1);
+    footer {
+      text-align: center;
+      padding: 2rem;
+      background: rgba(0, 0, 0, 0.7);
+      color: var(--muted);
+      font-size: .9rem;
+      border-top: 1px solid rgba(0, 191, 255, 0.1);
+    }
+
+    /* Media Queries for Mobile */
+    @media (max-width: 767px) {
+      .grid-3 { grid-template-columns: 1fr; }
+      h1 { font-size: 2.5rem; }
+      h2 { font-size: 2rem; }
+      h3 { font-size: 1.5rem; }
+      section { padding: 3rem 1rem; }
+      .btn { padding: .7rem 1.5rem; }
+      .card { padding: 1.5rem; }
+      .tabs { gap: .5rem; }
+      .tab-btn { padding: .5rem 1rem; }
     }
   </style>
 </head>
 <body>
 
+  <!-- Video background element -->
   <video autoplay muted loop playsinline id="bg-video">
     <source src="https://cdn.pixabay.com/video/2021/08/06/84086-584871133_large.mp4" type="video/mp4">
     <img src="https://placehold.co/1920x1080/080A1A/00BFFF?text=ARAYA+PORTAL" alt="Background">
@@ -488,7 +485,6 @@
     <div class="container">
       <h2>Tier Membership & Benefit</h2>
       <div class="grid grid-3">
-
         <div class="card tier bronze">
           <h3>BRONZE</h3>
           <p><strong>Harga:</strong> Rp 50.000</p>
@@ -532,7 +528,6 @@
             <li>Masa berlaku keanggotaan 6 bulan</li>
           </ul>
         </div>
-
       </div>
 
       <div class="card" style="margin-top:1rem">
@@ -553,22 +548,18 @@
   <section id="leaderboard">
     <div class="container">
       <h2>Leaderboard</h2>
-
       <div class="tabs">
         <button class="tab-btn active" data-target="all">All Season</button>
         <button class="tab-btn" data-target="s1">Season 1</button>
       </div>
-
       <div id="leaderboard-container" class="leaderboard-container">
-        <table>
-          </table>
+        <table></table>
       </div>
   </section>
 
   <section id="turnamen">
     <div class="container">
       <h2>Turnamen</h2>
-
       <div class="card">
         <h3>PES 2025</h3>
         <p>Khusus member</p>
@@ -578,6 +569,7 @@
       </div>
     </div>
   </section>
+
   <section id="daftar">
     <div class="container">
       <h2>Price List</h2>
@@ -588,14 +580,13 @@
           <li>Gold: Rp150.000</li>
         </ul>
         <p style="margin-top:.8rem;color:var(--primary)"></p>
-        <a class="btn primary" style="margin-top:.8rem"
-           target="_blank"
-           href="https://wa.me/6281350502525?text=Halo%20min">
+        <a class="btn primary" style="margin-top:.8rem" target="_blank" href="https://wa.me/6281350502525?text=Halo%20min">
           Daftar Sekarang
         </a>
       </div>
     </div>
   </section>
+
   <section id="faq">
     <div class="container">
       <h2>FAQ Member</h2>
@@ -609,7 +600,7 @@
       </div>
       <div class="card">
         <h3 style="margin-bottom:.5rem">Cara ikut turnamen?</h3>
-        <p>Login member, lalu klik tombol daftar turnamen yang tersedia<p>
+        <p>Login member, lalu klik tombol daftar turnamen yang tersedia</p>
         <p>(Syarat & Ketentuan Berlaku).</p>
       </div>
     </div>
@@ -627,14 +618,12 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
   <script>
-    // Variable global untuk menyimpan status member
+    // Global variables
     let memberData = null;
     let loggedIn = false;
-    
-    // Variabel kontrol untuk pendaftaran turnamen
     const isTournamentRegistrationOpen = false;
 
-    // Fungsi untuk menampilkan modal
+    // Function to show the custom modal
     function showModal(title, message) {
       const modal = document.getElementById('statusModal');
       document.getElementById('modalTitle').innerText = title;
@@ -642,16 +631,14 @@
       modal.classList.add('visible');
     }
 
-    // Fungsi untuk memeriksa dan mengaktifkan/menonaktifkan tombol turnamen
+    // Function to update the state of the "Join Tournament" button
     function updateJoinButtons() {
       const joinButtons = document.querySelectorAll('.join-btn');
       joinButtons.forEach(btn => {
         if (!isTournamentRegistrationOpen) {
-          // Jika pendaftaran ditutup, selalu tampilkan "Coming Soon" dan nonaktifkan tombol
           btn.disabled = true;
           btn.textContent = "Coming Soon";
         } else {
-          // Logika default jika pendaftaran dibuka
           const isEligible = loggedIn && 
                              memberData && 
                              memberData.STATUS && 
@@ -671,7 +658,7 @@
       });
     }
 
-    // Fungsi untuk menangani klik tombol turnamen
+    // Event handler for the join button
     function handleJoinClick(e) {
       if (!isTournamentRegistrationOpen) {
         e.preventDefault();
@@ -690,44 +677,32 @@
       }
     }
 
-    // Tambahkan event listener ke setiap tombol daftar turnamen
     document.querySelectorAll('.join-btn').forEach(btn => {
       btn.addEventListener('click', handleJoinClick);
     });
     
-    // Spreadsheet DATA MEMBER
+    // Google Sheets URLs for member data and leaderboard
     const memberSheetUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTsla4DIK8GQSXOAj5eMWVCMhThbuEMpcOMZBcYt9mPzKq_OGOS5MiZmlB-y8I9D_OOc9oIbxFaPoE7/pub?gid=0&single=true&output=csv";
-    
-    // Spreadsheet LEADERBOARD
     const leaderboardUrls = {
       all: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTsla4DIK8GQSXOAj5eMWVCMhThbuEMpcOMZBcYt9mPzKq_OGOS5MiZmlB-y8I9D_OOc9oIbxFaPoE7/pub?gid=1706144092&single=true&output=csv",
       s1: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTsla4DIK8GQSXOAj5eMWVCMhThbuEMpcOMZBcYt9mPzKq_OGOS5MiZmlB-y8I9D_OOc9oIbxFaPoE7/pub?gid=1706144092&single=true&output=csv",
     };
     
-    // Fungsi untuk memuat dan menampilkan data leaderboard
+    // Function to load and display leaderboard data
     function loadLeaderboard(seasonKey) {
       const url = leaderboardUrls[seasonKey];
       if (!url) return;
-      
       const container = document.getElementById('leaderboard-container');
       const table = container.querySelector('table');
-
-      // Animasi fade-out
       container.classList.add('fade-out');
-      // Tunggu transisi fade-out selesai
-      setTimeout(() => {
-      // Hapus konten tabel
-      table.innerHTML = ''; 
 
+      setTimeout(() => {
+        table.innerHTML = ''; 
         Papa.parse(url, {
           download: true,
           header: true,
           complete: function(results) {
-            const data = results.data
-              .filter(r => r.NAMA && r.POIN)
-              .map(r => ({ NAMA: r.NAMA, POIN: r.POIN }));
-            
-            // Buat thead
+            const data = results.data.filter(r => r.NAMA && r.POIN).map(r => ({ NAMA: r.NAMA, POIN: r.POIN }));
             const thead = document.createElement('thead');
             thead.innerHTML = `
               <tr>
@@ -738,7 +713,6 @@
             `;
             table.appendChild(thead);
 
-            // Buat tbody
             const tbody = document.createElement('tbody');
             data.forEach((row, i) => {
               const tr = document.createElement("tr");
@@ -750,54 +724,46 @@
               tbody.appendChild(tr);
             });
             table.appendChild(tbody);
-            
-            // Animasi fade-in
             container.classList.remove('fade-out');
           },
           error: function(err) {
             console.error("Gagal load leaderboard:", err);
-            // Hapus fade-out jika terjadi error
             container.classList.remove('fade-out');
           }
         });
-      }, 300); // Durasi transisi
+      }, 300);
     }
 
-    // Load All Season saat halaman dimuat
+    // Initial load on page content loaded
     document.addEventListener('DOMContentLoaded', () => {
       loadLeaderboard("all");
       updateJoinButtons();
     });
 
-    // Tab switching
+    // Event listener for leaderboard tabs
     document.querySelectorAll(".tab-btn").forEach(btn => {
       btn.addEventListener("click", () => {
-        // Hapus kelas 'active' dari semua tombol dan tambahkan ke tombol yang diklik
         document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
         btn.classList.add("active");
-        
         const target = btn.dataset.target;
         loadLeaderboard(target);
       });
     });
 
-    // Login → Kartu Member Digital
+    // Event listener for the login form submission
     document.getElementById("loginForm").addEventListener("submit", function(e) {
       e.preventDefault();
       const inputName = document.getElementById("memberName").value.trim().toLowerCase();
       const inputId = document.getElementById("memberId").value.trim().toLowerCase();
-
       Papa.parse(memberSheetUrl, {
         download: true,
         header: true,
         complete: function(results) {
           const data = results.data;
-          // Filter data yang tidak lengkap atau kosong
           const member = data.find(row => 
             row["NAMA"]?.toLowerCase() === inputName &&
             row["ID MEMBER"]?.toLowerCase() === inputId
           );
-
           const box = document.getElementById("memberBox");
           box.innerHTML = "";
 
@@ -808,7 +774,6 @@
             const status = (member["STATUS"] || '').toLowerCase();
             const start = member["START"] || 'N/A';
             const expired = member["EXPIRED"] || 'N/A';
-
             const statusClass = status === 'aktif' ? 'active' : 'expired';
             
             box.innerHTML = `
