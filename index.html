@@ -267,7 +267,7 @@
 
     /* Member ID Card */
     .member-card {
-      width: 90%;
+      width: 100%;
       max-width: 340px;
       height: 200px;
       border: 1px solid var(--primary);
@@ -304,18 +304,19 @@
       z-index: 1;
     }
     .member-card h3 {
-      font-size: 1.1rem;
+      font-size: 1rem;
       color: var(--secondary);
       text-shadow: none;
-      margin: 0;
+      top: 1.2rem;
+      left: 1rem;
       position: absolute;
       z-index: 2;
     }
     .member-card .id {
       position: absolute;
-      top: 1.7rem;
-      right: 1.5rem;
-      font-size: 0.9rem;
+      top: 1.2rem;
+      right: 1rem;
+      font-size: 1rem;
       color: var(--muted);
       text-shadow: none;
       font-family: 'Orbitron', sans-serif;
@@ -460,7 +461,7 @@
 
   <section class="hero container" style="text-align:center">
     <h1>ARAYA MEMBER PORTAL</h1>
-    <p style="font-size:1.1rem; color: var(--text); text-shadow:0 0 10px rgba(0,255,255,0.4);">Bergabung di komunitas ARAYA GAMESTATION — akses benefit, leaderboard, turnamen & promo eksklusif.</p>
+    <p style="font-size:1.1rem; color: var(--text); text-shadow:0 0 10px rgba(0,255,255,0.4);">Bergabung di komunitas ARAYA GAMESTATION<br>akses benefit, leaderboard, turnamen & promo eksklusif.</p>
     <div style="margin-top:2.5rem">
       <a href="#login" class="btn primary">Login Member</a>
       <a href="#daftar" class="btn accent">Daftar Sekarang</a>
@@ -578,9 +579,9 @@
           <li>Silver: Rp100.000</li>
           <li>Gold: Rp150.000</li>
         </ul>
-        <p style="margin-top:.8rem;color:var(--primary)"></p>
+        <p style="margin-top:.8rem;color:var(--primary)">Daftar/Perpanjang/Upgrade<br>Bisa hubungi admin via WhatsApp di bawah ini.</p>
         <a class="btn primary" style="margin-top:.8rem" target="_blank" href="https://wa.me/6281350502525?text=Halo%20min">
-          Daftar Sekarang
+          WhatsApp
         </a>
       </div>
     </div>
@@ -599,8 +600,7 @@
       </div>
       <div class="card">
         <h3 style="margin-bottom:.5rem">Cara ikut turnamen?</h3>
-        <p>Login member, lalu klik tombol daftar turnamen yang tersedia</p>
-        <p>(Syarat & Ketentuan Berlaku).</p>
+        <p>Login member, lalu klik tombol daftar turnamen yang tersedia.<br>(Syarat & Ketentuan Berlaku)</p>
       </div>
     </div>
   </section>
@@ -661,7 +661,7 @@
     function handleJoinClick(e) {
       if (!isTournamentRegistrationOpen) {
         e.preventDefault();
-        showModal('Pendaftaran Belum Dibuka', 'Turnamen akan segera dimulai. Pantau terus info terbaru di sosial media kami.');
+        showModal('Pendaftaran Belum Dibuka', 'Pantau terus info terbaru di sosial media kami.');
       } else if (e.target.disabled) {
         e.preventDefault();
         if (!loggedIn) {
