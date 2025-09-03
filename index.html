@@ -48,15 +48,15 @@
       position: relative;
     }
     a { text-decoration: none; }
-    h1, h2, h3 {
+    h1 {
       font-family: 'Orbitron', sans-serif;
       color: var(--secondary);
       margin-bottom: 0.8rem;
-      text-shadow: 0 0 15px var(--secondary);
+      text-shadow: 0 0 10px var(--secondary);
       transition: color 0.3s, text-shadow 0.3s;
     }
     h1 { font-size: 3.8rem; letter-spacing: 3px; }
-    h2 { font-size: 3rem; text-shadow: 0 0 12px var(--secondary); }
+    h2 { font-size: 3rem; text-shadow: 0 0 10px var(--secondary); }
     h3 { font-size: 1.8rem; color: var(--primary); }
     section { padding: 5rem 1.25rem; position: relative; z-index: 1; }
     .container { max-width: 1100px; margin: 0 auto; padding: 0 1rem; }
@@ -81,13 +81,13 @@
       background: var(--primary);
       color: var(--bg);
       border-color: var(--primary);
-      box-shadow: 0 0 20px rgba(0, 191, 255, 0.6);
+      box-shadow: 0 0 10px rgba(0, 191, 255, 0.5);
     }
     .btn.accent {
       background: var(--accent);
       color: var(--bg);
       border-color: var(--accent);
-      box-shadow: 0 0 20px rgba(173, 216, 230, 0.6);
+      box-shadow: 0 0 10px rgba(173, 216, 230, 0.5);
     }
     .btn.ghost {
       background: transparent;
@@ -96,7 +96,7 @@
     }
     .btn:hover:not(:disabled) {
       transform: translateY(-3px);
-      box-shadow: 0 0 25px var(--secondary), 0 0 40px var(--primary);
+      box-shadow: 0 0 20px var(--secondary), 0 0 40px var(--primary);
       border-color: var(--secondary);
     }
     .btn:disabled { cursor: not-allowed; opacity: .5; }
@@ -109,7 +109,7 @@
       padding: 2rem;
       margin-bottom: 1.5rem;
       background: rgba(18, 20, 35, 0.8);
-      box-shadow: 0 0 10px rgba(0, 191, 255, 0.2);
+      box-shadow: 0 0 10px rgba(0, 191, 255, 0.3);
       transition: transform .4s, box-shadow .4s, border-color .4s;
       overflow: hidden;
       word-wrap: break-word;
@@ -133,7 +133,7 @@
     }
     .card:hover {
       transform: translateY(-5px);
-      box-shadow: 0 15px 35px rgba(0, 255, 255, 0.3);
+      box-shadow: 0 10px 20px rgba(0, 255, 255, 0.3);
       border-color: var(--secondary);
     }
 
@@ -152,7 +152,7 @@
     input:focus {
       outline: none;
       border-color: var(--secondary);
-      box-shadow: 0 0 12px rgba(0, 255, 255, 0.4);
+      box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
     }
 
     /* Grid & List */
@@ -170,7 +170,7 @@
       height: 8px;
       background: var(--secondary);
       border-radius: 50%;
-      box-shadow: 0 0 8px var(--secondary);
+      box-shadow: 0 0 10px var(--secondary);
     }
 
     /* Tier Cards */
@@ -181,39 +181,72 @@
       overflow: hidden;
       transition: transform .3s, box-shadow .3s;
       background: rgba(18, 20, 35, 0.9);
-      border: 1px solid;
+      border: 1px solid transparent;
+      padding: 1rem;
     }
-    .tier h3 { color: var(--text); text-shadow: none; text-align: center; }
+    .tier h3 {
+      color: var(--text);
+      text-shadow: none;
+      text-align: center;
+    }
     .tier.bronze {
       background: var(--bronze);
       border-color: var(--bronze);
-      box-shadow: 0 0 10px rgba(205, 127, 50, .35);
+      box-shadow: 0 0 10px rgba(140, 74, 47, 0.3);
+    }
+    .tier.bronze:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(140, 74, 47, 0.5);
+      border-color: var(--bronze);
     }
     .tier.silver {
       background: var(--silver);
       border-color: var(--silver);
-      box-shadow: 0 0 10px rgba(192, 192, 192, .35);
+      box-shadow: 0 0 10px rgba(203, 216, 230, 0.3);
+    }
+    .tier.silver:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(203, 216, 230, 0.5);
+      border-color: var(--silver);
     }
     .tier.gold {
       background: var(--gold);
       border-color: var(--gold);
-      box-shadow: 0 0 10px rgba(255, 215, 0, .4);
+      box-shadow: 0 0 10px rgba(255, 206, 0, 0.3);
     }
-    .tier p strong { color: var(--text); }
+    .tier.gold:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(255, 206, 0, 0.5);
+      border-color: var(--gold);
+    }
+    .tier p strong {
+      color: var(--text);
+    }
+    .tier ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
     .tier ul li {
       font-weight: 500;
       color: var(--text);
       text-shadow: none;
       padding-left: 1.5rem;
+      position: relative;
+      margin-bottom: .5rem;
     }
     .tier ul li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.5em;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
       background: var(--secondary);
-      box-shadow: 0 0 5px var(--secondary);
+      box-shadow: 0 0 10px var(--secondary);
     }
-    .tier:hover {
-      transform: translateY(-8px);
-    }
-
+    
     /* Tabs Leaderboard */
     .tabs { display: flex; flex-wrap: wrap; gap: .8rem; justify-content: center; margin: 1.5rem 0 1.5rem; }
     .tab-btn {
@@ -239,7 +272,7 @@
       width: 100%;
       max-height: 550px;
       overflow-y: auto;
-      box-shadow: 0 0 10px rgba(0, 191, 255, 0.2);
+      box-shadow: 0 0 10px rgba(0, 191, 255, 0.3);
       border: 1px solid var(--line);
       border-radius: 6px;
       opacity: 1;
@@ -260,10 +293,10 @@
       z-index: 1;
       text-transform: uppercase;
       font-family: 'Orbitron', sans-serif;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     }
     tr:nth-child(even) { background: rgba(0, 255, 255, 0.03); }
-    tr:hover { background: rgba(0, 191, 255, .1); transition: .25s; }
+    tr:hover { background: rgba(0, 191, 255, .3); transition: .25s; }
 
     /* Member ID Card */
     .member-card {
@@ -272,7 +305,7 @@
       height: 200px;
       border: 1px solid var(--primary);
       border-radius: 6px;
-      box-shadow: 0 0 15px rgba(0, 191, 255, .4);
+      box-shadow: 0 0 10px rgba(0, 191, 255, .5);
       margin: 1.5rem auto;
       padding: 1.5rem;
       display: flex;
@@ -289,7 +322,7 @@
       transition: box-shadow 0.4s ease-in-out, transform 0.3s ease-out;
     }
     .member-card:hover {
-      box-shadow: 0 0 30px var(--secondary);
+      box-shadow: 0 0 20px var(--secondary);
       transform: translateY(-5px);
     }
     .member-card::before, .member-card::after { content: none; }
@@ -404,7 +437,7 @@
       background: rgba(18, 20, 35, 0.98);
       padding: 2.5rem;
       border-radius: 6px;
-      box-shadow: 0 0 25px rgba(0, 191, 255, 0.5);
+      box-shadow: 0 0 10px rgba(0, 191, 255, 0.5);
       text-align: center;
       max-width: 450px;
       width: 90%;
@@ -431,11 +464,11 @@
     /* Footer */
     footer {
       text-align: center;
-      padding: 2rem;
-      background: rgba(0, 0, 0, 0.7);
+      padding: 1rem;
+      background: rgba(0, 0, 0, 0.3);
       color: var(--muted);
-      font-size: .9rem;
-      border-top: 1px solid rgba(0, 191, 255, 0.1);
+      font-size: .7rem;
+      border-top: 1px solid rgba(0, 191, 255, 0.3);
     }
 
     /* Media Queries for Mobile */
@@ -461,7 +494,7 @@
 
   <section class="hero container" style="text-align:center">
     <h1>ARAYA MEMBER PORTAL</h1>
-    <p style="font-size:1.1rem; color: var(--text); text-shadow:0 0 10px rgba(0,255,255,0.4);">Bergabung di komunitas ARAYA GAMESTATION<br>akses benefit, leaderboard, turnamen & promo eksklusif.</p>
+    <p style="font-size:1.1rem; color: var(--text); text-shadow:0 0 10px rgba(0,255,255,0.5);">Bergabung di komunitas ARAYA GAMESTATION<br>akses benefit, leaderboard, turnamen & promo eksklusif.</p>
     <div style="margin-top:2.5rem">
       <a href="#login" class="btn primary">Login Member</a>
       <a href="#daftar" class="btn accent">Daftar Sekarang</a>
@@ -561,11 +594,13 @@
     <div class="container">
       <h2>Turnamen</h2>
       <div class="card">
-        <h3>PES 2025</h3>
-        <p>Khusus member</p>
-        <a class="btn accent join-btn" id="comingSoonBtn">
-          Coming Soon
-        </a>
+       <ul>
+         <li>PES 2025</li>
+       </ul>
+       <p style="margin-top:.8rem;color:var(--primary)">Turnamen berjalan jika minimal 32 slot terpenuhi, jika tidak maka diundur ke akhir bulan berikutnya.</p>
+       <a class="btn accent join-btn" id="comingSoonBtn">
+       Coming Soon
+       </a>
       </div>
     </div>
   </section>
@@ -581,7 +616,7 @@
         </ul>
         <p style="margin-top:.8rem;color:var(--primary)">Daftar/Perpanjang/Upgrade<br>Bisa hubungi admin via WhatsApp di bawah ini.</p>
         <a class="btn primary" style="margin-top:.8rem" target="_blank" href="https://wa.me/6281350502525?text=Halo%20min">
-          WhatsApp
+        WhatsApp
         </a>
       </div>
     </div>
