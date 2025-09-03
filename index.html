@@ -2,11 +2,11 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ARAYA MEMBER PORTAL</title>
 
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
-
+  
   <style>
   
     :root{
@@ -53,11 +53,11 @@
       font-family:'Orbitron',sans-serif;
       color:var(--secondary);
       margin-bottom:0.8rem;
-      text-shadow:0 0 15px var(--secondary);
+      text-shadow:0 0 10px var(--secondary);
       transition: color 0.3s, text-shadow 0.3s;
     }
     h1{font-size:3.8rem;letter-spacing:3px}
-    h2{font-size:3rem;text-shadow:0 0 12px var(--secondary)}
+    h2{font-size:3rem;text-shadow:0 0 10px var(--secondary)}
     h3{font-size:1.8rem;color:var(--primary)}
     
     section{padding:5rem 1.25rem;position:relative;z-index:1}
@@ -83,13 +83,13 @@
       background:var(--primary);
       color:var(--bg);
       border-color:var(--primary);
-      box-shadow:0 0 20px rgba(0,191,255,0.6);
+      box-shadow:0 0 15px rgba(0,191,255,0.6);
     }
     .btn.accent{
       background:var(--accent);
       color:var(--bg);
       border-color:var(--accent);
-      box-shadow:0 0 20px rgba(173,216,230,0.6);
+      box-shadow:0 0 15px rgba(173,216,230,0.6);
     }
     .btn.ghost{
       background:transparent;
@@ -98,7 +98,7 @@
     }
     .btn:hover:not(:disabled){
       transform:translateY(-3px);
-      box-shadow:0 0 25px var(--secondary), 0 0 40px var(--primary);
+      box-shadow:0 0 20px var(--secondary), 0 0 40px var(--primary);
       border-color:var(--secondary);
     }
     .btn:disabled{cursor:not-allowed;opacity:.5}
@@ -132,7 +132,7 @@
     }
     .card:hover{
       transform:translateY(-5px);
-      box-shadow:0 15px 35px rgba(0,255,255,0.3);
+      box-shadow:0 20px 35px rgba(0,255,255,0.3);
       border-color:var(--secondary);
     }
     
@@ -150,7 +150,7 @@
     input:focus{
       outline:none;
       border-color:var(--secondary);
-      box-shadow:0 0 12px rgba(0,255,255,0.4);
+      box-shadow:0 0 10px rgba(0,255,255,0.4);
     }
     
     .grid{display:grid;gap:2rem}
@@ -165,7 +165,7 @@
       width:8px;height:8px;
       background:var(--secondary);
       border-radius:50%;
-      box-shadow:0 0 8px var(--secondary);
+      box-shadow:0 0 10px var(--secondary);
     }
 
     /* Tier Cards */
@@ -203,7 +203,7 @@
     }
     .tier ul li::before{
       background:var(--secondary);
-      box-shadow:0 0 5px var(--secondary);
+      box-shadow:0 0 10px var(--secondary);
     }
     .tier:hover {
       transform: translateY(-8px);
@@ -256,18 +256,18 @@
       color:var(--primary);letter-spacing:.5px;position:sticky;top:0;z-index:1;
       text-transform:uppercase;
       font-family:'Orbitron',sans-serif;
-      box-shadow:0 2px 8px rgba(0,0,0,0.4);
+      box-shadow:0 2px 10px rgba(0,0,0,0.4);
     }
     tr:nth-child(even){background:rgba(0,255,255,0.03)}
     tr:hover{background:rgba(0,191,255,.1);transition:.25s}
 
     /* Member ID Card */
     .member-card {
-      width: 340px;
+      width: 100%;
       height: 200px;
       border: 1px solid var(--primary);
       border-radius: 6px;
-      box-shadow: 0 0 15px rgba(0,191,255,.4);
+      box-shadow: 0 0 10px rgba(0,191,255,.4);
       margin: 1.5rem auto;
       padding: 1.5rem;
       display: flex;
@@ -285,7 +285,7 @@
     }
 
     .member-card:hover {
-        box-shadow: 0 0 30px var(--secondary);
+        box-shadow: 0 0 20px var(--secondary);
         transform: translateY(-5px);
     }
 
@@ -413,7 +413,7 @@
       background: rgba(18,20,35,0.98);
       padding: 2.5rem;
       border-radius: 6px;
-      box-shadow: 0 0 25px rgba(0,191,255,0.5);
+      box-shadow: 0 0 20px rgba(0,191,255,0.5);
       text-align: center;
       max-width: 450px;
       width: 90%;
@@ -447,11 +447,11 @@
     /* Footer */
     footer{
       text-align:center;
-      padding:2rem;
-      background:rgba(0,0,0,0.7);
+      padding:1rem;
+      background:rgba(0,0,0,0.3);
       color:var(--muted);
-      font-size:.9rem;
-      border-top:1px solid rgba(0,191,255,0.1);
+      font-size:.7rem;
+      border-top:1px solid rgba(0,191,255,0.3);
     }
   </style>
 </head>
@@ -464,7 +464,7 @@
 
   <section class="hero container" style="text-align:center">
     <h1>ARAYA MEMBER PORTAL</h1>
-    <p style="font-size:1.1rem; color: var(--text); text-shadow:0 0 10px rgba(0,255,255,0.4);">Bergabung di komunitas gamer ARAYA — akses benefit, leaderboard, turnamen & promo eksklusif.</p>
+    <p style="font-size:1.1rem; color: var(--text); text-shadow:0 0 10px rgba(0,255,255,0.5);">Bergabung di komunitas ARAYA GAMESTATION<br>akses benefit, leaderboard, turnamen & promo eksklusif.</p>
     <div style="margin-top:2.5rem">
       <a href="#login" class="btn primary">Login Member</a>
       <a href="#daftar" class="btn accent">Daftar Sekarang</a>
@@ -488,7 +488,6 @@
     <div class="container">
       <h2>Tier Membership & Benefit</h2>
       <div class="grid grid-3">
-
         <div class="card tier bronze">
           <h3>BRONZE</h3>
           <p><strong>Harga:</strong> Rp 50.000</p>
@@ -532,7 +531,6 @@
             <li>Masa berlaku keanggotaan 6 bulan</li>
           </ul>
         </div>
-
       </div>
 
       <div class="card" style="margin-top:1rem">
@@ -553,41 +551,30 @@
   <section id="leaderboard">
     <div class="container">
       <h2>Leaderboard</h2>
-
       <div class="tabs">
         <button class="tab-btn active" data-target="all">All Season</button>
         <button class="tab-btn" data-target="s1">Season 1</button>
       </div>
-
       <div id="leaderboard-container" class="leaderboard-container">
-        <table>
-          </table>
+        <table></table>
       </div>
   </section>
 
   <section id="turnamen">
     <div class="container">
       <h2>Turnamen</h2>
-
       <div class="card">
-        <h3>PES 2025</h3>
-        <p>Khusus member.</p>
-        <a class="btn accent join-btn" data-turnamen="PES 2025" target="_blank"
-           href="https://wa.me/6281234567890?text=Daftar%20Turnamen%20FIFA%20CUP">
-          Daftar via WhatsApp
-        </a>
-      </div>
-
-      <div class="card">
-        <h3>eFootball™ 2025</h3>
-        <p>Khusus member.</p>
-        <a class="btn accent join-btn" data-turnamen="eFootball 2025" target="_blank"
-           href="https://wa.me/6281234567890?text=Daftar%20Turnamen%20TEKKEN">
-          Daftar via WhatsApp
-        </a>
+       <ul>
+         <li>PES 2025</li>
+       </ul>
+       <p style="margin-top:.8rem;color:var(--primary)">Turnamen berjalan jika minimal 32 slot terpenuhi, jika tidak maka diundur ke akhir bulan berikutnya.</p>
+       <a class="btn accent join-btn" id="comingSoonBtn">
+       Coming Soon
+       </a>
       </div>
     </div>
   </section>
+
   <section id="daftar">
     <div class="container">
       <h2>Price List</h2>
@@ -597,15 +584,14 @@
           <li>Silver: Rp100.000</li>
           <li>Gold: Rp150.000</li>
         </ul>
-        <p style="margin-top:.8rem;color:var(--primary)"></p>
-        <a class="btn primary" style="margin-top:.8rem"
-           target="_blank"
-           href="https://wa.me/6281234567890?text=Saya%20ingin%20daftar%20member%20ARAYA">
-          Daftar Sekarang
+        <p style="margin-top:.8rem;color:var(--primary)">Daftar/Perpanjang/Upgrade<br>Bisa hubungi admin via WhatsApp di bawah ini.</p>
+        <a class="btn primary" style="margin-top:.8rem" target="_blank" href="https://wa.me/6281350502525?text=Halo%20min">
+        WhatsApp
         </a>
       </div>
     </div>
   </section>
+
   <section id="faq">
     <div class="container">
       <h2>FAQ Member</h2>
@@ -619,7 +605,7 @@
       </div>
       <div class="card">
         <h3 style="margin-bottom:.5rem">Cara ikut turnamen?</h3>
-        <p>Login member, lalu klik tombol daftar turnamen yang tersedia, (Syarat & Ketentuan Berlaku).</p>
+        <p>Login member, lalu klik tombol daftar turnamen yang tersedia.<br>(Syarat & Ketentuan Berlaku)</p>
       </div>
     </div>
   </section>
@@ -636,11 +622,12 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
   <script>
-    // Variable global untuk menyimpan status member
+    // Global variables
     let memberData = null;
     let loggedIn = false;
-    
-    // Fungsi untuk menampilkan modal
+    const isTournamentRegistrationOpen = false;
+
+    // Function to show the custom modal
     function showModal(title, message) {
       const modal = document.getElementById('statusModal');
       document.getElementById('modalTitle').innerText = title;
@@ -648,30 +635,39 @@
       modal.classList.add('visible');
     }
 
-    // Fungsi untuk memeriksa dan mengaktifkan/menonaktifkan tombol turnamen
+    // Function to update the state of the "Join Tournament" button
     function updateJoinButtons() {
       const joinButtons = document.querySelectorAll('.join-btn');
       joinButtons.forEach(btn => {
-    // Cek apakah member sudah login, datanya ada, statusnya 'AKTIF', dan poinnya >= 250
-      const isEligible = loggedIn && 
-                         memberData && 
-                         memberData.STATUS && 
-                         memberData.STATUS.toLowerCase() === 'aktif' && 
-                         parseInt(memberData['POIN SEASON'], 10) >= 250;
-        
-        if (isEligible) {
-          btn.disabled = false;
-          btn.href = `https://wa.me/6281234567890?text=Daftar%20Turnamen%20${encodeURIComponent(btn.dataset.turnamen)}`;
-        } else {
+        if (!isTournamentRegistrationOpen) {
           btn.disabled = true;
-          btn.removeAttribute('href');
+          btn.textContent = "Coming Soon";
+        } else {
+          const isEligible = loggedIn && 
+                             memberData && 
+                             memberData.STATUS && 
+                             memberData.STATUS.toLowerCase() === 'aktif' && 
+                             parseInt(memberData['POIN SEASON'], 10) >= 250;
+          
+          if (isEligible) {
+            btn.disabled = false;
+            btn.textContent = "Daftar via WhatsApp";
+            btn.href = `https://wa.me/6281350502525?text=Halo%20min%20ulun%20mau%20daftar%20turnamen`;
+          } else {
+            btn.disabled = true;
+            btn.textContent = "Daftar via WhatsApp";
+            btn.removeAttribute('href');
+          }
         }
       });
     }
 
-    // Fungsi untuk menangani klik tombol turnamen
+    // Event handler for the join button
     function handleJoinClick(e) {
-      if (e.target.disabled) {
+      if (!isTournamentRegistrationOpen) {
+        e.preventDefault();
+        showModal('Pendaftaran Belum Dibuka', 'Pantau terus info terbaru di sosial media kami.');
+      } else if (e.target.disabled) {
         e.preventDefault();
         if (!loggedIn) {
           showModal('Login Diperlukan', 'Silakan login terlebih dahulu untuk mendaftar turnamen.');
@@ -685,45 +681,32 @@
       }
     }
 
-    // Tambahkan event listener ke setiap tombol daftar turnamen
     document.querySelectorAll('.join-btn').forEach(btn => {
       btn.addEventListener('click', handleJoinClick);
     });
     
-    // ====== Spreadsheet DATA MEMBER ======
+    // Google Sheets URLs for member data and leaderboard
     const memberSheetUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTsla4DIK8GQSXOAj5eMWVCMhThbuEMpcOMZBcYt9mPzKq_OGOS5MiZmlB-y8I9D_OOc9oIbxFaPoE7/pub?gid=0&single=true&output=csv";
-    
-    // Spreadsheet LEADERBOARD
     const leaderboardUrls = {
       all: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTsla4DIK8GQSXOAj5eMWVCMhThbuEMpcOMZBcYt9mPzKq_OGOS5MiZmlB-y8I9D_OOc9oIbxFaPoE7/pub?gid=1706144092&single=true&output=csv",
       s1: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTsla4DIK8GQSXOAj5eMWVCMhThbuEMpcOMZBcYt9mPzKq_OGOS5MiZmlB-y8I9D_OOc9oIbxFaPoE7/pub?gid=1706144092&single=true&output=csv",
     };
     
-    // Fungsi untuk memuat dan menampilkan data leaderboard
+    // Function to load and display leaderboard data
     function loadLeaderboard(seasonKey) {
       const url = leaderboardUrls[seasonKey];
       if (!url) return;
-      
       const container = document.getElementById('leaderboard-container');
       const table = container.querySelector('table');
-
-      // Animasi fade-out
       container.classList.add('fade-out');
 
-      // Tunggu transisi fade-out selesai
       setTimeout(() => {
-      // Hapus konten tabel
-      table.innerHTML = ''; 
-
+        table.innerHTML = ''; 
         Papa.parse(url, {
           download: true,
           header: true,
           complete: function(results) {
-            const data = results.data
-              .filter(r => r.NAMA && r.POIN)
-              .map(r => ({ NAMA: r.NAMA, POIN: r.POIN }));
-            
-            // Buat thead
+            const data = results.data.filter(r => r.NAMA && r.POIN).map(r => ({ NAMA: r.NAMA, POIN: r.POIN }));
             const thead = document.createElement('thead');
             thead.innerHTML = `
               <tr>
@@ -734,7 +717,6 @@
             `;
             table.appendChild(thead);
 
-            // Buat tbody
             const tbody = document.createElement('tbody');
             data.forEach((row, i) => {
               const tr = document.createElement("tr");
@@ -746,54 +728,46 @@
               tbody.appendChild(tr);
             });
             table.appendChild(tbody);
-            
-            // Animasi fade-in
             container.classList.remove('fade-out');
           },
           error: function(err) {
             console.error("Gagal load leaderboard:", err);
-            // Hapus fade-out jika terjadi error
             container.classList.remove('fade-out');
           }
         });
-      }, 300); // Durasi transisi
+      }, 300);
     }
 
-    // Load All Season saat halaman dimuat
+    // Initial load on page content loaded
     document.addEventListener('DOMContentLoaded', () => {
       loadLeaderboard("all");
       updateJoinButtons();
     });
 
-    // Tab switching
+    // Event listener for leaderboard tabs
     document.querySelectorAll(".tab-btn").forEach(btn => {
       btn.addEventListener("click", () => {
-        // Hapus kelas 'active' dari semua tombol dan tambahkan ke tombol yang diklik
         document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
         btn.classList.add("active");
-        
         const target = btn.dataset.target;
         loadLeaderboard(target);
       });
     });
 
-    // Login → Kartu Member Digital
+    // Event listener for the login form submission
     document.getElementById("loginForm").addEventListener("submit", function(e) {
       e.preventDefault();
       const inputName = document.getElementById("memberName").value.trim().toLowerCase();
       const inputId = document.getElementById("memberId").value.trim().toLowerCase();
-
       Papa.parse(memberSheetUrl, {
         download: true,
         header: true,
         complete: function(results) {
           const data = results.data;
-          // Filter data yang tidak lengkap atau kosong
           const member = data.find(row => 
             row["NAMA"]?.toLowerCase() === inputName &&
             row["ID MEMBER"]?.toLowerCase() === inputId
           );
-
           const box = document.getElementById("memberBox");
           box.innerHTML = "";
 
@@ -804,7 +778,6 @@
             const status = (member["STATUS"] || '').toLowerCase();
             const start = member["START"] || 'N/A';
             const expired = member["EXPIRED"] || 'N/A';
-
             const statusClass = status === 'aktif' ? 'active' : 'expired';
             
             box.innerHTML = `
@@ -838,7 +811,7 @@
           }
         },
         error: function(err, file) {
-            console.error("Gagal mengunduh spreadsheet. Pastikan URL-nya benar dan dapat diakses publik.", err);
+            console.error("Gagal memuat data, Pastikan data dapat diakses publik.", err);
             showModal('Kesalahan Jaringan', 'Gagal memuat data member. Silakan periksa koneksi internet Anda atau hubungi admin.');
         }
       });
